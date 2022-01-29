@@ -22,7 +22,7 @@
 				},
 				{
 					"name": "support.function.label",
-					"match": ".*\\:$"
+					"match": "^(?!#).*\\:"
 				},
 				{
 					"name": "keyword.operator.new.arithmetic",
@@ -66,12 +66,17 @@
 				},
 				{
 					"name": "variable.parameter.register",
-					"match": "^%.*|eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dc|dl|dr|edi|eip|esp|ebp"
+					"match": "^%.*|eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dc|dl|dr|edi|eip|esp|ebp|esi"
 				},
 				{
 					"name": "comment.line.asm",
 					"begin": "#",
 					"end": "\n"
+				},
+				{
+					"name": "comment.block.asm",
+					"begin": "/\\*",
+					"end": "\\*/"
 				},
 				{
 					"name": "constant.numeric.hex",
