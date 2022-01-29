@@ -1,0 +1,104 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "assembly",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "markup.bold.preprocess",
+					"match": "\\.data|\\.text|\\.globl|\\.global|.end"
+				},
+				{
+					"name": "keyword.datatype.asm",
+					"match": "\\.byte|\\.word|\\.long|\\.quad|\\.int|\\.ascii|\\.asciz"
+				},
+				{
+					"name": "support.function.label",
+					"match": ".*\\:$"
+				},
+				{
+					"name": "keyword.operator.new.arithmetic",
+					"match": "addb|addw|addl|addq|subb|subw|subl|subq|negb|negw|negl|negq|incb|incw|incl|incq|decb|decw|decl|decq|mulb|mulw|mull|mulq|divb|divw|divl|divq|imulb|imulw|imull|imulq|idivb|idivw|idivl|idivq|cmp|cmpb|cmpw|cmpl|cmpq|testb|testw|testl|testq"
+				},
+				{
+					"name": "keyword.operator.new.shifting",
+					"match": "\\b(salb|salw|sall|salq|shlb|shlw|shll|shlq|sarb|sarw|sarl|sarq|shrb|shrw|shrl|shrq|rolb|rolw|roll|rolq|rorb|rorw|rorl|rorq|rclb|rclw|rcll|rclq|rcrb|rcrw|rcrl|rcrq)\\b"
+				},
+				{
+					"name": "keyword.operator.new.boolean",
+					"match": "\\b(notb|notw|notl|notq|andb|andw|andl|andq|orb|orw|orl|orq|xorb|xorw|xorl|xorq)\\b"
+				},
+				{
+					"name": "keyword.operator.new.move",
+					"match": "\\b(movb|movw|movl|movq)\\b"
+				},
+				{
+					"name": "keyword.operator.new.memory",
+					"match": "\\b(leab|leaw|leal|leaq)\\b"
+				},
+				{
+					"name": "keyword.operator.new.call",
+					"match": "\\b(call|int)\\b"
+				},
+				{
+					"name": "keyword.operator.new.stack",
+					"match": "\\b(pushb|pushw|pushl|pushq|popb|popw|popl|popq)\\b"
+				},
+				{
+					"name": "keyword.operator.new.macro",
+					"match": "\\b(xchg)\\b"
+				},
+				{
+					"name": "keyword.operator.new.spacial",
+					"match": "\\b(nop)\\b"
+				},
+				{
+					"name": "keyword.control.asm",
+					"match": "\\b(leave|ret|loop|j|jmp|ja|jae|jb|jbe|je|jg|jge|jl|jle|jna|jnae|jnb|jnbe|jne|jng|jnge|jnl|jnle|jc|jo|jp|jpe|jpo|js|jz|jnc|jno|jnp|jns|jnz|jcxz|jecxz)\\b"
+				},
+				{
+					"name": "variable.parameter.register",
+					"match": "^%.*|eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dc|dl|dr|edi|eip|esp|ebp"
+				},
+				{
+					"name": "comment.line.asm",
+					"begin": "#",
+					"end": "\n"
+				},
+				{
+					"name": "constant.numeric.hex",
+					"match": "[x][A-Fa-f0-9]{1,4}+"
+				},
+				{
+					"name": "constant.numeric.dec",
+					"match": "[0-9]+"
+				},
+				{
+					"name": "markup.characters", 
+					"match": "[A-Za-z][A-Za-z0-9_]+"
+				}
+			]
+		},
+		"strings": {
+				"name": "string.quoted.double.asm",
+				"begin": "\"|\\'",
+				"end": "\"|\\'",
+				"patterns": [
+					{
+						"name": "constant.character.escape.asm",
+						"match": "\\\\."
+					}
+				]
+			}
+
+	},
+	"scopeName": "source.S"
+}

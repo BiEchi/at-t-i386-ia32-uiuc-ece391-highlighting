@@ -1,0 +1,26 @@
+{
+    "name": "at-t-i386-ia32-uiuc-ece391-highlighting",
+    "displayName": "AT&T_i386_IA32_UIUC_ECE391_highlighting",
+    "description": "A grammar highliting and auto-completing extension for AT&T Assembly language grammar support, with format to be i386/IA32, which is used by UIUC ECE391 course.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "icon": "./graph/icon.png",
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "asm",
+            "aliases": ["assembly", "asm"],
+            "extensions": [".S", ".s"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "asm",
+            "scopeName": "source.S",
+            "path": "./syntaxes/asm.tmLanguage.json"
+        }]
+    }
+}
