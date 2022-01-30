@@ -1,13 +1,13 @@
 {
     "iconDefinitions": {
         "file.S": {
-            "iconPath": "../graphs/S.png"
+            "iconPath": "../graphs/s.png"
         },
         "file.C": {
-            "iconPath": "../graphs/C.png"
+            "iconPath": "../graphs/c.png"
         },
         "file.CPP": {
-            "iconPath": "../graphs/CPP.png"
+            "iconPath": "../graphs/cpp.png"
         },
         "MAKEFILE": {
             "iconPath": "../graphs/makefile.png"
@@ -26,6 +26,9 @@
         },
         "file.md": {
             "iconPath": "../graphs/markdown.png"
+        },
+        "file.h": {
+            "iconPath": "../graphs/h.png"
         }
     },
     "fileNames":{
@@ -41,6 +44,7 @@
         "PDF": "file.pdf",
         "DIFF": "file.diff",
         "TXT": "file.txt",
-        "MD": "file.md"
+        "MD": "file.md",
+        "H": "file.h"
     }
 }

@@ -29,6 +29,10 @@ This is the VS Code Extension for UIUC ECE 391, MIT 6.828, and all other AT&T-ba
 
 ![image-20220129152332934](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-29-212333.png)
 
+-   To use the icon theme, press `shift+ctrl+p` at the same time, then choose `Preferences: File Icon Theme`, then choose `ECE 391 UIUC`.
+
+
+
 ## Known Issues
 
 -   No issues hitherto.
