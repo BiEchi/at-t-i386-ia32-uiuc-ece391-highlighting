@@ -1,0 +1,48 @@
+"cmpb Operation": {
+	"prefix":[
+		"cmpb"
+	],
+	"body": "cmpb\t${1:val2}\t${2:val1}"
+},
+"cmpw Operation": {
+	"prefix":[
+		"cmpw"
+	],
+	"body": "cmpw\t${1:val2}\t${2:val1}"
+},
+"cmpl Operation": {
+	"prefix":[
+		"cmpl"
+	],
+	"body": "cmpl\t${1:val2}\t${2:val1}"
+},
+"cmpq Operation": {
+	"prefix":[
+		"cmpq"
+	],
+	"body": "cmpq\t${1:val2}\t${2:val1}"
+},
+"testb Operation": {
+	"prefix":[
+		"testb"
+	],
+	"body": "testb\t${1:val2}\t${2:val1}"
+},
+"testw Operation": {
+	"prefix":[
+		"testw"
+	],
+	"body": "testw\t${1:val2}\t${2:val1}"
+},
+"testl Operation": {
+	"prefix":[
+		"testl"
+	],
+	"body": "testl\t${1:val2}\t${2:val1}"
+},
+"testq Operation": {
+	"prefix":[
+		"testq"
+	],
+	"body": "testq\t${1:val2}\t${2:val1}"
+},

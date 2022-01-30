@@ -6,6 +6,22 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 
 
+## [2.0.0] - 2022.1.30
+
+### Added
+
+-   Completed the snippet functionalities with auto-completing feature.
+
+
+
+## [1.4.0] - 2022.1.30
+
+### Changed
+
+-   Fixed the `compl` highlighting bug.
+
+
+
 ## [1.3.0] - 2022.1.29
 
 ### Changed

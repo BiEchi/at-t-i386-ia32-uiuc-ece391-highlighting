@@ -1,0 +1,48 @@
+"pushb Stack Operation": {
+	"prefix":[
+		"pushb"
+	],
+	"body": "pushb\t${1:ptr_reg}"
+},
+"pushw Stack Operation": {
+	"prefix":[
+		"pushw"
+	],
+	"body": "pushw\t${1:ptr_reg}"
+},
+"pushl Stack Operation": {
+	"prefix":[
+		"pushl"
+	],
+	"body": "pushl\t${1:ptr_reg}"
+},
+"pushq Stack Operation": {
+	"prefix":[
+		"pushq"
+	],
+	"body": "pushq\t${1:ptr_reg}"
+},
+"popb Stack Operation": {
+	"prefix":[
+		"popb"
+	],
+	"body": "popb\t${1:ptr_reg}"
+},
+"popw Stack Operation": {
+	"prefix":[
+		"popw"
+	],
+	"body": "popw\t${1:ptr_reg}"
+},
+"popl Stack Operation": {
+	"prefix":[
+		"popl"
+	],
+	"body": "popl\t${1:ptr_reg}"
+},
+"popq Stack Operation": {
+	"prefix":[
+		"popq"
+	],
+	"body": "popq\t${1:ptr_reg}"
+}

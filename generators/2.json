@@ -1,0 +1,144 @@
+"addb Operation": {
+	"prefix":[
+		"addb"
+	],
+	"body": "addb\t${1:src/imm}\t${2:dest}"
+},
+"addw Operation": {
+	"prefix":[
+		"addw"
+	],
+	"body": "addw\t${1:src/imm}\t${2:dest}"
+},
+"addl Operation": {
+	"prefix":[
+		"addl"
+	],
+	"body": "addl\t${1:src/imm}\t${2:dest}"
+},
+"addq Operation": {
+	"prefix":[
+		"addq"
+	],
+	"body": "addq\t${1:src/imm}\t${2:dest}"
+},
+"subb Operation": {
+	"prefix":[
+		"subb"
+	],
+	"body": "subb\t${1:src/imm}\t${2:dest}"
+},
+"subw Operation": {
+	"prefix":[
+		"subw"
+	],
+	"body": "subw\t${1:src/imm}\t${2:dest}"
+},
+"subl Operation": {
+	"prefix":[
+		"subl"
+	],
+	"body": "subl\t${1:src/imm}\t${2:dest}"
+},
+"subq Operation": {
+	"prefix":[
+		"subq"
+	],
+	"body": "subq\t${1:src/imm}\t${2:dest}"
+},
+"mulb Operation": {
+	"prefix":[
+		"mulb"
+	],
+	"body": "mulb\t${1:src/imm}\t${2:dest}"
+},
+"mulw Operation": {
+	"prefix":[
+		"mulw"
+	],
+	"body": "mulw\t${1:src/imm}\t${2:dest}"
+},
+"mull Operation": {
+	"prefix":[
+		"mull"
+	],
+	"body": "mull\t${1:src/imm}\t${2:dest}"
+},
+"mulq Operation": {
+	"prefix":[
+		"mulq"
+	],
+	"body": "mulq\t${1:src/imm}\t${2:dest}"
+},
+"divb Operation": {
+	"prefix":[
+		"divb"
+	],
+	"body": "divb\t${1:src/imm}\t${2:dest}"
+},
+"divw Operation": {
+	"prefix":[
+		"divw"
+	],
+	"body": "divw\t${1:src/imm}\t${2:dest}"
+},
+"divl Operation": {
+	"prefix":[
+		"divl"
+	],
+	"body": "divl\t${1:src/imm}\t${2:dest}"
+},
+"divq Operation": {
+	"prefix":[
+		"divq"
+	],
+	"body": "divq\t${1:src/imm}\t${2:dest}"
+},
+"imulb Operation": {
+	"prefix":[
+		"imulb"
+	],
+	"body": "imulb\t${1:src/imm}\t${2:dest}"
+},
+"imulw Operation": {
+	"prefix":[
+		"imulw"
+	],
+	"body": "imulw\t${1:src/imm}\t${2:dest}"
+},
+"imull Operation": {
+	"prefix":[
+		"imull"
+	],
+	"body": "imull\t${1:src/imm}\t${2:dest}"
+},
+"imulq Operation": {
+	"prefix":[
+		"imulq"
+	],
+	"body": "imulq\t${1:src/imm}\t${2:dest}"
+},
+"idivb Operation": {
+	"prefix":[
+		"idivb"
+	],
+	"body": "idivb\t${1:src/imm}\t${2:dest}"
+},
+"idivw Operation": {
+	"prefix":[
+		"idivw"
+	],
+	"body": "idivw\t${1:src/imm}\t${2:dest}"
+},
+"idivl Operation": {
+	"prefix":[
+		"idivl"
+	],
+	"body": "idivl\t${1:src/imm}\t${2:dest}"
+},
+"idivq Operation": {
+	"prefix":[
+		"idivq"
+	],
+	"body": "idivq\t${1:src/imm}\t${2:dest}"
+},

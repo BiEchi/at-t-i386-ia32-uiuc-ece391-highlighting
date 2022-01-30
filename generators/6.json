@@ -1,0 +1,120 @@
+"andb Operation": {
+	"prefix":[
+		"andb"
+	],
+	"body": "andb\t${1:src/imm}\t${2:dest}"
+},
+"andw Operation": {
+	"prefix":[
+		"andw"
+	],
+	"body": "andw\t${1:src/imm}\t${2:dest}"
+},
+"andl Operation": {
+	"prefix":[
+		"andl"
+	],
+	"body": "andl\t${1:src/imm}\t${2:dest}"
+},
+"andq Operation": {
+	"prefix":[
+		"andq"
+	],
+	"body": "andq\t${1:src/imm}\t${2:dest}"
+},
+"orb Operation": {
+	"prefix":[
+		"orb"
+	],
+	"body": "orb\t${1:src/imm}\t${2:dest}"
+},
+"orw Operation": {
+	"prefix":[
+		"orw"
+	],
+	"body": "orw\t${1:src/imm}\t${2:dest}"
+},
+"orl Operation": {
+	"prefix":[
+		"orl"
+	],
+	"body": "orl\t${1:src/imm}\t${2:dest}"
+},
+"orq Operation": {
+	"prefix":[
+		"orq"
+	],
+	"body": "orq\t${1:src/imm}\t${2:dest}"
+},
+"xorb Operation": {
+	"prefix":[
+		"xorb"
+	],
+	"body": "xorb\t${1:src/imm}\t${2:dest}"
+},
+"xorw Operation": {
+	"prefix":[
+		"xorw"
+	],
+	"body": "xorw\t${1:src/imm}\t${2:dest}"
+},
+"xorl Operation": {
+	"prefix":[
+		"xorl"
+	],
+	"body": "xorl\t${1:src/imm}\t${2:dest}"
+},
+"xorq Operation": {
+	"prefix":[
+		"xorq"
+	],
+	"body": "xorq\t${1:src/imm}\t${2:dest}"
+},
+"movb Operation": {
+	"prefix":[
+		"movb"
+	],
+	"body": "movb\t${1:src/imm}\t${2:dest}"
+},
+"movw Operation": {
+	"prefix":[
+		"movw"
+	],
+	"body": "movw\t${1:src/imm}\t${2:dest}"
+},
+"movl Operation": {
+	"prefix":[
+		"movl"
+	],
+	"body": "movl\t${1:src/imm}\t${2:dest}"
+},
+"movq Operation": {
+	"prefix":[
+		"movq"
+	],
+	"body": "movq\t${1:src/imm}\t${2:dest}"
+},
+"leab Operation": {
+	"prefix":[
+		"leab"
+	],
+	"body": "leab\t${1:src/imm}\t${2:dest}"
+},
+"leaw Operation": {
+	"prefix":[
+		"leaw"
+	],
+	"body": "leaw\t${1:src/imm}\t${2:dest}"
+},
+"leal Operation": {
+	"prefix":[
+		"leal"
+	],
+	"body": "leal\t${1:src/imm}\t${2:dest}"
+},
+"leaq Operation": {
+	"prefix":[
+		"leaq"
+	],
+	"body": "leaq\t${1:src/imm}\t${2:dest}"
+},

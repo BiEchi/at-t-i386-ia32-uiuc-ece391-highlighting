@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "assembly",
+	"name": "AT&T Assembly",
 	"patterns": [
 		{
 			"include": "#keywords"
@@ -26,7 +26,7 @@
 				},
 				{
 					"name": "keyword.operator.new.arithmetic",
-					"match": "addb|addw|addl|addq|subb|subw|subl|subq|negb|negw|negl|negq|incb|incw|incl|incq|decb|decw|decl|decq|mulb|mulw|mull|mulq|divb|divw|divl|divq|imulb|imulw|imull|imulq|idivb|idivw|idivl|idivq|cmp|cmpb|cmpw|cmpl|cmpq|testb|testw|testl|testq"
+					"match": "\\b(addb|addw|addl|addq|subb|subw|subl|subq|negb|negw|negl|negq|incb|incw|incl|incq|decb|decw|decl|decq|mulb|mulw|mull|mulq|divb|divw|divl|divq|imulb|imulw|imull|imulq|idivb|idivw|idivl|idivq|cmpb|cmpw|cmpl|cmpq|testb|testw|testl|testq)\\b"
 				},
 				{
 					"name": "keyword.operator.new.shifting",

@@ -1,13 +1,22 @@
-# AT&T i386 IA32 UIUC ECE391 GCC Highlighting
+# AT&T i386 IA32 UIUC ECE391 GCC Highlighter & Snippet & Linter
 
-This is the VS Code Extension for UIUC ECE 408, MIT 6.828, and all other AT&T-based i386(IA-32/x86-32) assembly languages. Current VS Code extensions for assembly are mostly industry-oriented, but this extension is designed for college students and researchers in this area.
+This is the VS Code Extension for UIUC ECE 391, MIT 6.828, and all other AT&T-based i386(IA-32/x86-32) assembly languages. Current VS Code extensions for assembly are mostly industry-oriented, but this extension is designed for college students and researchers in this area.
 
 ## Features
 
 -   Syntax Highlighting.
--   Self Complete (developing).
 
-![image-20220129143605616](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-29-204040.png)
+![image-20220130141503525](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201504.png)
+
+-   Self Complete.
+
+![image-20220130141442388](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201442.png)
+
+![image-20220130141516885](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201519.png)
+
+-   Static analysis like `linter` (developing).
+
+
 
 ## Requirements
 
@@ -18,7 +27,7 @@ This is the VS Code Extension for UIUC ECE 408, MIT 6.828, and all other AT&T-ba
 
 ## Known Issues
 
--   Not able to auto-complete hitherto.
+-   No issues hitherto.
 
 ## Request A Feature
 

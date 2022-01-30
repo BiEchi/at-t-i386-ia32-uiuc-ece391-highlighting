@@ -1,0 +1,192 @@
+"salb Operation": {
+	"prefix":[
+		"salb"
+	],
+	"body": "salb\t${1:src/imm}\t${2:dest}"
+},
+"salw Operation": {
+	"prefix":[
+		"salw"
+	],
+	"body": "salw\t${1:src/imm}\t${2:dest}"
+},
+"sall Operation": {
+	"prefix":[
+		"sall"
+	],
+	"body": "sall\t${1:src/imm}\t${2:dest}"
+},
+"salq Operation": {
+	"prefix":[
+		"salq"
+	],
+	"body": "salq\t${1:src/imm}\t${2:dest}"
+},
+"shlb Operation": {
+	"prefix":[
+		"shlb"
+	],
+	"body": "shlb\t${1:src/imm}\t${2:dest}"
+},
+"shlw Operation": {
+	"prefix":[
+		"shlw"
+	],
+	"body": "shlw\t${1:src/imm}\t${2:dest}"
+},
+"shll Operation": {
+	"prefix":[
+		"shll"
+	],
+	"body": "shll\t${1:src/imm}\t${2:dest}"
+},
+"shlq Operation": {
+	"prefix":[
+		"shlq"
+	],
+	"body": "shlq\t${1:src/imm}\t${2:dest}"
+},
+"sarb Operation": {
+	"prefix":[
+		"sarb"
+	],
+	"body": "sarb\t${1:src/imm}\t${2:dest}"
+},
+"sarw Operation": {
+	"prefix":[
+		"sarw"
+	],
+	"body": "sarw\t${1:src/imm}\t${2:dest}"
+},
+"sarl Operation": {
+	"prefix":[
+		"sarl"
+	],
+	"body": "sarl\t${1:src/imm}\t${2:dest}"
+},
+"sarq Operation": {
+	"prefix":[
+		"sarq"
+	],
+	"body": "sarq\t${1:src/imm}\t${2:dest}"
+},
+"shrb Operation": {
+	"prefix":[
+		"shrb"
+	],
+	"body": "shrb\t${1:src/imm}\t${2:dest}"
+},
+"shrw Operation": {
+	"prefix":[
+		"shrw"
+	],
+	"body": "shrw\t${1:src/imm}\t${2:dest}"
+},
+"shrl Operation": {
+	"prefix":[
+		"shrl"
+	],
+	"body": "shrl\t${1:src/imm}\t${2:dest}"
+},
+"shrq Operation": {
+	"prefix":[
+		"shrq"
+	],
+	"body": "shrq\t${1:src/imm}\t${2:dest}"
+},
+"rolb Operation": {
+	"prefix":[
+		"rolb"
+	],
+	"body": "rolb\t${1:src/imm}\t${2:dest}"
+},
+"rolw Operation": {
+	"prefix":[
+		"rolw"
+	],
+	"body": "rolw\t${1:src/imm}\t${2:dest}"
+},
+"roll Operation": {
+	"prefix":[
+		"roll"
+	],
+	"body": "roll\t${1:src/imm}\t${2:dest}"
+},
+"rolq Operation": {
+	"prefix":[
+		"rolq"
+	],
+	"body": "rolq\t${1:src/imm}\t${2:dest}"
+},
+"rorb Operation": {
+	"prefix":[
+		"rorb"
+	],
+	"body": "rorb\t${1:src/imm}\t${2:dest}"
+},
+"rorw Operation": {
+	"prefix":[
+		"rorw"
+	],
+	"body": "rorw\t${1:src/imm}\t${2:dest}"
+},
+"rorl Operation": {
+	"prefix":[
+		"rorl"
+	],
+	"body": "rorl\t${1:src/imm}\t${2:dest}"
+},
+"rorq Operation": {
+	"prefix":[
+		"rorq"
+	],
+	"body": "rorq\t${1:src/imm}\t${2:dest}"
+},
+"rclb Operation": {
+	"prefix":[
+		"rclb"
+	],
+	"body": "rclb\t${1:src/imm}\t${2:dest}"
+},
+"rclw Operation": {
+	"prefix":[
+		"rclw"
+	],
+	"body": "rclw\t${1:src/imm}\t${2:dest}"
+},
+"rcll Operation": {
+	"prefix":[
+		"rcll"
+	],
+	"body": "rcll\t${1:src/imm}\t${2:dest}"
+},
+"rclq Operation": {
+	"prefix":[
+		"rclq"
+	],
+	"body": "rclq\t${1:src/imm}\t${2:dest}"
+},
+"rcrb Operation": {
+	"prefix":[
+		"rcrb"
+	],
+	"body": "rcrb\t${1:src/imm}\t${2:dest}"
+},
+"rcrw Operation": {
+	"prefix":[
+		"rcrw"
+	],
+	"body": "rcrw\t${1:src/imm}\t${2:dest}"
+},
+"rcrl Operation": {
+	"prefix":[
+		"rcrl"
+	],
+	"body": "rcrl\t${1:src/imm}\t${2:dest}"
+},
+"rcrq Operation": {
+	"prefix":[
+		"rcrq"
+	],
+	"body": "rcrq\t${1:src/imm}\t${2:dest}"
+},
