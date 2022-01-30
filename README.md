@@ -6,13 +6,17 @@ This is the VS Code Extension for UIUC ECE 391, MIT 6.828, and all other AT&T-ba
 
 -   Syntax Highlighting.
 
-![image-20220130141503525](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201504.png)
+![image-20220130141503525](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201504.png)
 
 -   Self Complete.
 
-![image-20220130141442388](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201442.png)
+![image-20220130141442388](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201442.png)
 
-![image-20220130141516885](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201519.png)
+![image-20220130141516885](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201519.png)
+
+-   File icons designed for UIUC students.
+
+![image-20220130154626450](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-214627.png)
 
 -   Static analysis like `linter` (developing).
 

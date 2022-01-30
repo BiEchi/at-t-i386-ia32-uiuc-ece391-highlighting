@@ -6,6 +6,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 
 
+## [2.0.5] - 2022.1.30
+
+### Added
+
+-   Designed file icons.
+
+
+
 ## [2.0.0] - 2022.1.30
 
 ### Added

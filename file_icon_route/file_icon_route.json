@@ -1,0 +1,46 @@
+{
+    "iconDefinitions": {
+        "file.S": {
+            "iconPath": "../graphs/S.png"
+        },
+        "file.C": {
+            "iconPath": "../graphs/C.png"
+        },
+        "file.CPP": {
+            "iconPath": "../graphs/CPP.png"
+        },
+        "MAKEFILE": {
+            "iconPath": "../graphs/makefile.png"
+        },
+        "file.JSON": {
+            "iconPath": "../graphs/json.png"
+        },
+        "file.pdf": {
+            "iconPath": "../graphs/pdf.png"
+        },
+        "file.diff": {
+            "iconPath": "../graphs/diff.png"
+        },
+        "file.txt": {
+            "iconPath": "../graphs/txt.png"
+        },
+        "file.md": {
+            "iconPath": "../graphs/markdown.png"
+        }
+    },
+    "fileNames":{
+        "makefile": "MAKEFILE",
+        "Makefile": "MAKEFILE",
+        "MAKEFILE": "MAKEFILE"
+    },
+    "fileExtensions": {
+        "S": "file.S",
+        "C": "file.C",
+        "CPP": "file.CPP",
+        "JSON": "file.JSON",
+        "PDF": "file.pdf",
+        "DIFF": "file.diff",
+        "TXT": "file.txt",
+        "MD": "file.md"
+    }
+}
