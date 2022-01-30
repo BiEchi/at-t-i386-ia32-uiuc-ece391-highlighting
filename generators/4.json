@@ -2,47 +2,47 @@
 	"prefix":[
 		"cmpb"
 	],
-	"body": "cmpb\t${1:val2}\t${2:val1}"
+	"body": "cmpb\t${1:val2},\t${2:val1}\n"
 },
 "cmpw Operation": {
 	"prefix":[
 		"cmpw"
 	],
-	"body": "cmpw\t${1:val2}\t${2:val1}"
+	"body": "cmpw\t${1:val2},\t${2:val1}\n"
 },
 "cmpl Operation": {
 	"prefix":[
 		"cmpl"
 	],
-	"body": "cmpl\t${1:val2}\t${2:val1}"
+	"body": "cmpl\t${1:val2},\t${2:val1}\n"
 },
 "cmpq Operation": {
 	"prefix":[
 		"cmpq"
 	],
-	"body": "cmpq\t${1:val2}\t${2:val1}"
+	"body": "cmpq\t${1:val2},\t${2:val1}\n"
 },
 "testb Operation": {
 	"prefix":[
 		"testb"
 	],
-	"body": "testb\t${1:val2}\t${2:val1}"
+	"body": "testb\t${1:val2},\t${2:val1}\n"
 },
 "testw Operation": {
 	"prefix":[
 		"testw"
 	],
-	"body": "testw\t${1:val2}\t${2:val1}"
+	"body": "testw\t${1:val2},\t${2:val1}\n"
 },
 "testl Operation": {
 	"prefix":[
 		"testl"
 	],
-	"body": "testl\t${1:val2}\t${2:val1}"
+	"body": "testl\t${1:val2},\t${2:val1}\n"
 },
 "testq Operation": {
 	"prefix":[
 		"testq"
 	],
-	"body": "testq\t${1:val2}\t${2:val1}"
+	"body": "testq\t${1:val2},\t${2:val1}\n"
 },

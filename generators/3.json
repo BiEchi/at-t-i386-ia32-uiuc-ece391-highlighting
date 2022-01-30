@@ -2,71 +2,71 @@
 	"prefix":[
 		"incb"
 	],
-	"body": "incb\t${1:src&dest}"
+	"body": "incb\t${1:src&dest}\n"
 },
 "incw Operation": {
 	"prefix":[
 		"incw"
 	],
-	"body": "incw\t${1:src&dest}"
+	"body": "incw\t${1:src&dest}\n"
 },
 "incl Operation": {
 	"prefix":[
 		"incl"
 	],
-	"body": "incl\t${1:src&dest}"
+	"body": "incl\t${1:src&dest}\n"
 },
 "incq Operation": {
 	"prefix":[
 		"incq"
 	],
-	"body": "incq\t${1:src&dest}"
+	"body": "incq\t${1:src&dest}\n"
 },
 "decb Operation": {
 	"prefix":[
 		"decb"
 	],
-	"body": "decb\t${1:src&dest}"
+	"body": "decb\t${1:src&dest}\n"
 },
 "decw Operation": {
 	"prefix":[
 		"decw"
 	],
-	"body": "decw\t${1:src&dest}"
+	"body": "decw\t${1:src&dest}\n"
 },
 "decl Operation": {
 	"prefix":[
 		"decl"
 	],
-	"body": "decl\t${1:src&dest}"
+	"body": "decl\t${1:src&dest}\n"
 },
 "decq Operation": {
 	"prefix":[
 		"decq"
 	],
-	"body": "decq\t${1:src&dest}"
+	"body": "decq\t${1:src&dest}\n"
 },
 "negb Operation": {
 	"prefix":[
 		"negb"
 	],
-	"body": "negb\t${1:src&dest}"
+	"body": "negb\t${1:src&dest}\n"
 },
 "negw Operation": {
 	"prefix":[
 		"negw"
 	],
-	"body": "negw\t${1:src&dest}"
+	"body": "negw\t${1:src&dest}\n"
 },
 "negl Operation": {
 	"prefix":[
 		"negl"
 	],
-	"body": "negl\t${1:src&dest}"
+	"body": "negl\t${1:src&dest}\n"
 },
 "negq Operation": {
 	"prefix":[
 		"negq"
 	],
-	"body": "negq\t${1:src&dest}"
+	"body": "negq\t${1:src&dest}\n"
 },

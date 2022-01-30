@@ -2,119 +2,119 @@
 	"prefix":[
 		"andb"
 	],
-	"body": "andb\t${1:src/imm}\t${2:dest}"
+	"body": "andb\t${1:src/imm},\t${2:dest}\n"
 },
 "andw Operation": {
 	"prefix":[
 		"andw"
 	],
-	"body": "andw\t${1:src/imm}\t${2:dest}"
+	"body": "andw\t${1:src/imm},\t${2:dest}\n"
 },
 "andl Operation": {
 	"prefix":[
 		"andl"
 	],
-	"body": "andl\t${1:src/imm}\t${2:dest}"
+	"body": "andl\t${1:src/imm},\t${2:dest}\n"
 },
 "andq Operation": {
 	"prefix":[
 		"andq"
 	],
-	"body": "andq\t${1:src/imm}\t${2:dest}"
+	"body": "andq\t${1:src/imm},\t${2:dest}\n"
 },
 "orb Operation": {
 	"prefix":[
 		"orb"
 	],
-	"body": "orb\t${1:src/imm}\t${2:dest}"
+	"body": "orb\t${1:src/imm},\t${2:dest}\n"
 },
 "orw Operation": {
 	"prefix":[
 		"orw"
 	],
-	"body": "orw\t${1:src/imm}\t${2:dest}"
+	"body": "orw\t${1:src/imm},\t${2:dest}\n"
 },
 "orl Operation": {
 	"prefix":[
 		"orl"
 	],
-	"body": "orl\t${1:src/imm}\t${2:dest}"
+	"body": "orl\t${1:src/imm},\t${2:dest}\n"
 },
 "orq Operation": {
 	"prefix":[
 		"orq"
 	],
-	"body": "orq\t${1:src/imm}\t${2:dest}"
+	"body": "orq\t${1:src/imm},\t${2:dest}\n"
 },
 "xorb Operation": {
 	"prefix":[
 		"xorb"
 	],
-	"body": "xorb\t${1:src/imm}\t${2:dest}"
+	"body": "xorb\t${1:src/imm},\t${2:dest}\n"
 },
 "xorw Operation": {
 	"prefix":[
 		"xorw"
 	],
-	"body": "xorw\t${1:src/imm}\t${2:dest}"
+	"body": "xorw\t${1:src/imm},\t${2:dest}\n"
 },
 "xorl Operation": {
 	"prefix":[
 		"xorl"
 	],
-	"body": "xorl\t${1:src/imm}\t${2:dest}"
+	"body": "xorl\t${1:src/imm},\t${2:dest}\n"
 },
 "xorq Operation": {
 	"prefix":[
 		"xorq"
 	],
-	"body": "xorq\t${1:src/imm}\t${2:dest}"
+	"body": "xorq\t${1:src/imm},\t${2:dest}\n"
 },
 "movb Operation": {
 	"prefix":[
 		"movb"
 	],
-	"body": "movb\t${1:src/imm}\t${2:dest}"
+	"body": "movb\t${1:src/imm},\t${2:dest}\n"
 },
 "movw Operation": {
 	"prefix":[
 		"movw"
 	],
-	"body": "movw\t${1:src/imm}\t${2:dest}"
+	"body": "movw\t${1:src/imm},\t${2:dest}\n"
 },
 "movl Operation": {
 	"prefix":[
 		"movl"
 	],
-	"body": "movl\t${1:src/imm}\t${2:dest}"
+	"body": "movl\t${1:src/imm},\t${2:dest}\n"
 },
 "movq Operation": {
 	"prefix":[
 		"movq"
 	],
-	"body": "movq\t${1:src/imm}\t${2:dest}"
+	"body": "movq\t${1:src/imm},\t${2:dest}\n"
 },
 "leab Operation": {
 	"prefix":[
 		"leab"
 	],
-	"body": "leab\t${1:src/imm}\t${2:dest}"
+	"body": "leab\t${1:src/imm},\t${2:dest}\n"
 },
 "leaw Operation": {
 	"prefix":[
 		"leaw"
 	],
-	"body": "leaw\t${1:src/imm}\t${2:dest}"
+	"body": "leaw\t${1:src/imm},\t${2:dest}\n"
 },
 "leal Operation": {
 	"prefix":[
 		"leal"
 	],
-	"body": "leal\t${1:src/imm}\t${2:dest}"
+	"body": "leal\t${1:src/imm},\t${2:dest}\n"
 },
 "leaq Operation": {
 	"prefix":[
 		"leaq"
 	],
-	"body": "leaq\t${1:src/imm}\t${2:dest}"
+	"body": "leaq\t${1:src/imm},\t${2:dest}\n"
 },
