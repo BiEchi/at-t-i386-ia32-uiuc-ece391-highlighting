@@ -2,7 +2,7 @@
     "name": "at-t-i386-ia32-uiuc-ece391-highlighting",
     "displayName": "AT&T i386 IA32 UIUC ECE391 GCC Highlighting",
     "description": "A grammar highlighting and auto-completing extension for AT&T Assembly language grammar support, with format to be i386/IA32, which is used by UIUC ECE391 course.",
-    "version": "2.0.6",
+    "version": "2.3.0",
     "icon": "graphs/icon.png",
     "publisher": "JackBAI",
     "engines": {
@@ -15,8 +15,13 @@
 	},
     "categories": [
         "Programming Languages",
-		"Snippets"
+		"Snippets",
+        "Themes"
     ],
+    "activationEvents": [
+            "onLanguage:attasm"
+    ],
+    "main": "./semantic/extension.js",
 	"contributes": {
 		"languages": [
 			{

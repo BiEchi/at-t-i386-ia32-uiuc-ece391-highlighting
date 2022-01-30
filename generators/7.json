@@ -1,24 +1,24 @@
-"notb Operation": {
+"notb Arthmetic Operation": {
 	"prefix":[
 		"notb"
 	],
-	"body": "notb\t${1:dest}\n"
+	"body": "notb\t${1:reg}\n"
 },
-"notw Operation": {
+"notw Arthmetic Operation": {
 	"prefix":[
 		"notw"
 	],
-	"body": "notw\t${1:dest}\n"
+	"body": "notw\t${1:reg}\n"
 },
-"notl Operation": {
+"notl Arthmetic Operation": {
 	"prefix":[
 		"notl"
 	],
-	"body": "notl\t${1:dest}\n"
+	"body": "notl\t${1:reg}\n"
 },
-"notq Operation": {
+"notq Arthmetic Operation": {
 	"prefix":[
 		"notq"
 	],
-	"body": "notq\t${1:dest}\n"
+	"body": "notq\t${1:reg}\n"
 },

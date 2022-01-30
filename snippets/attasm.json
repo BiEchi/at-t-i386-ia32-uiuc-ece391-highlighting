@@ -1,621 +1,831 @@
 {
-    "byte Data Declare": {
-        "prefix":[
-            ".byte"
-        ],
-        "body": ".byte\t${1:byte_data}"
-    },
-    "word Data Declare": {
-        "prefix":[
-            ".word"
-        ],
-        "body": ".word\t${1:word_data}"
-    },
-    "long Data Declare": {
-        "prefix":[
-            ".long"
-        ],
-        "body": ".long\t${1:long_data}"
-    },
-    "quad Data Declare": {
-        "prefix":[
-            ".quad"
-        ],
-        "body": ".quad\t${1:quad_data}"
-    },
-    "int Data Declare": {
-        "prefix":[
-            ".int"
-        ],
-        "body": ".int\t${1:int_data}"
-    },
-    "ascii Data Declare": {
-        "prefix":[
-            ".ascii"
-        ],
-        "body": ".ascii\t${1:ascii_data}"
-    },
-    "asciz Data Declare": {
-        "prefix":[
-            ".asciz"
-        ],
-        "body": ".asciz\t${1:asciz_data}"
-    },
-    "addb Operation": {
-        "prefix":[
-            "addb"
-        ],
-        "body": "addb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "addw Operation": {
-        "prefix":[
-            "addw"
-        ],
-        "body": "addw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "addl Operation": {
-        "prefix":[
-            "addl"
-        ],
-        "body": "addl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "addq Operation": {
-        "prefix":[
-            "addq"
-        ],
-        "body": "addq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "subb Operation": {
-        "prefix":[
-            "subb"
-        ],
-        "body": "subb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "subw Operation": {
-        "prefix":[
-            "subw"
-        ],
-        "body": "subw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "subl Operation": {
-        "prefix":[
-            "subl"
-        ],
-        "body": "subl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "subq Operation": {
-        "prefix":[
-            "subq"
-        ],
-        "body": "subq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "mulb Operation": {
-        "prefix":[
-            "mulb"
-        ],
-        "body": "mulb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "mulw Operation": {
-        "prefix":[
-            "mulw"
-        ],
-        "body": "mulw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "mull Operation": {
-        "prefix":[
-            "mull"
-        ],
-        "body": "mull\t${1:src/imm},\t${2:dest}\n"
-    },
-    "mulq Operation": {
-        "prefix":[
-            "mulq"
-        ],
-        "body": "mulq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "divb Operation": {
-        "prefix":[
-            "divb"
-        ],
-        "body": "divb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "divw Operation": {
-        "prefix":[
-            "divw"
-        ],
-        "body": "divw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "divl Operation": {
-        "prefix":[
-            "divl"
-        ],
-        "body": "divl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "divq Operation": {
-        "prefix":[
-            "divq"
-        ],
-        "body": "divq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "imulb Operation": {
-        "prefix":[
-            "imulb"
-        ],
-        "body": "imulb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "imulw Operation": {
-        "prefix":[
-            "imulw"
-        ],
-        "body": "imulw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "imull Operation": {
-        "prefix":[
-            "imull"
-        ],
-        "body": "imull\t${1:src/imm},\t${2:dest}\n"
-    },
-    "imulq Operation": {
-        "prefix":[
-            "imulq"
-        ],
-        "body": "imulq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "idivb Operation": {
-        "prefix":[
-            "idivb"
-        ],
-        "body": "idivb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "idivw Operation": {
-        "prefix":[
-            "idivw"
-        ],
-        "body": "idivw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "idivl Operation": {
-        "prefix":[
-            "idivl"
-        ],
-        "body": "idivl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "idivq Operation": {
-        "prefix":[
-            "idivq"
-        ],
-        "body": "idivq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "cmpb Operation": {
-        "prefix":[
-            "cmpb"
-        ],
-        "body": "cmpb\t${1:val2},\t${2:val1}\n"
-    },
-    "cmpw Operation": {
-        "prefix":[
-            "cmpw"
-        ],
-        "body": "cmpw\t${1:val2},\t${2:val1}\n"
-    },
-    "cmpl Operation": {
-        "prefix":[
-            "cmpl"
-        ],
-        "body": "cmpl\t${1:val2},\t${2:val1}\n"
-    },
-    "cmpq Operation": {
-        "prefix":[
-            "cmpq"
-        ],
-        "body": "cmpq\t${1:val2},\t${2:val1}\n"
-    },
-    "testb Operation": {
-        "prefix":[
-            "testb"
-        ],
-        "body": "testb\t${1:val2},\t${2:val1}\n"
-    },
-    "testw Operation": {
-        "prefix":[
-            "testw"
-        ],
-        "body": "testw\t${1:val2},\t${2:val1}\n"
-    },
-    "testl Operation": {
-        "prefix":[
-            "testl"
-        ],
-        "body": "testl\t${1:val2},\t${2:val1}\n"
-    },
-    "testq Operation": {
-        "prefix":[
-            "testq"
-        ],
-        "body": "testq\t${1:val2},\t${2:val1}\n"
-    },
-    "salb Operation": {
-        "prefix":[
-            "salb"
-        ],
-        "body": "salb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "salw Operation": {
-        "prefix":[
-            "salw"
-        ],
-        "body": "salw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "sall Operation": {
-        "prefix":[
-            "sall"
-        ],
-        "body": "sall\t${1:src/imm},\t${2:dest}\n"
-    },
-    "salq Operation": {
-        "prefix":[
-            "salq"
-        ],
-        "body": "salq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shlb Operation": {
-        "prefix":[
-            "shlb"
-        ],
-        "body": "shlb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shlw Operation": {
-        "prefix":[
-            "shlw"
-        ],
-        "body": "shlw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shll Operation": {
-        "prefix":[
-            "shll"
-        ],
-        "body": "shll\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shlq Operation": {
-        "prefix":[
-            "shlq"
-        ],
-        "body": "shlq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "sarb Operation": {
-        "prefix":[
-            "sarb"
-        ],
-        "body": "sarb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "sarw Operation": {
-        "prefix":[
-            "sarw"
-        ],
-        "body": "sarw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "sarl Operation": {
-        "prefix":[
-            "sarl"
-        ],
-        "body": "sarl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "sarq Operation": {
-        "prefix":[
-            "sarq"
-        ],
-        "body": "sarq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shrb Operation": {
-        "prefix":[
-            "shrb"
-        ],
-        "body": "shrb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shrw Operation": {
-        "prefix":[
-            "shrw"
-        ],
-        "body": "shrw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shrl Operation": {
-        "prefix":[
-            "shrl"
-        ],
-        "body": "shrl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "shrq Operation": {
-        "prefix":[
-            "shrq"
-        ],
-        "body": "shrq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rolb Operation": {
-        "prefix":[
-            "rolb"
-        ],
-        "body": "rolb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rolw Operation": {
-        "prefix":[
-            "rolw"
-        ],
-        "body": "rolw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "roll Operation": {
-        "prefix":[
-            "roll"
-        ],
-        "body": "roll\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rolq Operation": {
-        "prefix":[
-            "rolq"
-        ],
-        "body": "rolq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rorb Operation": {
-        "prefix":[
-            "rorb"
-        ],
-        "body": "rorb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rorw Operation": {
-        "prefix":[
-            "rorw"
-        ],
-        "body": "rorw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rorl Operation": {
-        "prefix":[
-            "rorl"
-        ],
-        "body": "rorl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rorq Operation": {
-        "prefix":[
-            "rorq"
-        ],
-        "body": "rorq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rclb Operation": {
-        "prefix":[
-            "rclb"
-        ],
-        "body": "rclb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rclw Operation": {
-        "prefix":[
-            "rclw"
-        ],
-        "body": "rclw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rcll Operation": {
-        "prefix":[
-            "rcll"
-        ],
-        "body": "rcll\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rclq Operation": {
-        "prefix":[
-            "rclq"
-        ],
-        "body": "rclq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rcrb Operation": {
-        "prefix":[
-            "rcrb"
-        ],
-        "body": "rcrb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rcrw Operation": {
-        "prefix":[
-            "rcrw"
-        ],
-        "body": "rcrw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rcrl Operation": {
-        "prefix":[
-            "rcrl"
-        ],
-        "body": "rcrl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "rcrq Operation": {
-        "prefix":[
-            "rcrq"
-        ],
-        "body": "rcrq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "andb Operation": {
-        "prefix":[
-            "andb"
-        ],
-        "body": "andb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "andw Operation": {
-        "prefix":[
-            "andw"
-        ],
-        "body": "andw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "andl Operation": {
-        "prefix":[
-            "andl"
-        ],
-        "body": "andl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "andq Operation": {
-        "prefix":[
-            "andq"
-        ],
-        "body": "andq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "orb Operation": {
-        "prefix":[
-            "orb"
-        ],
-        "body": "orb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "orw Operation": {
-        "prefix":[
-            "orw"
-        ],
-        "body": "orw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "orl Operation": {
-        "prefix":[
-            "orl"
-        ],
-        "body": "orl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "orq Operation": {
-        "prefix":[
-            "orq"
-        ],
-        "body": "orq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "xorb Operation": {
-        "prefix":[
-            "xorb"
-        ],
-        "body": "xorb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "xorw Operation": {
-        "prefix":[
-            "xorw"
-        ],
-        "body": "xorw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "xorl Operation": {
-        "prefix":[
-            "xorl"
-        ],
-        "body": "xorl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "xorq Operation": {
-        "prefix":[
-            "xorq"
-        ],
-        "body": "xorq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "movb Operation": {
-        "prefix":[
-            "movb"
-        ],
-        "body": "movb\t${1:src/imm},\t${2:dest}\n"
-    },
-    "movw Operation": {
-        "prefix":[
-            "movw"
-        ],
-        "body": "movw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "movl Operation": {
-        "prefix":[
-            "movl"
-        ],
-        "body": "movl\t${1:src/imm},\t${2:dest}\n"
-    },
-    "movq Operation": {
-        "prefix":[
-            "movq"
-        ],
-        "body": "movq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "leab Operation": {
-        "prefix":[
-            "leab"
-        ],
-        "body": "leab\t${1:src/imm},\t${2:dest}\n"
-    },
-    "leaw Operation": {
-        "prefix":[
-            "leaw"
-        ],
-        "body": "leaw\t${1:src/imm},\t${2:dest}\n"
-    },
-    "leal Operation": {
-        "prefix":[
-            "leal"
-        ],
-        "body": "leal\t${1:src/imm},\t${2:dest}\n"
-    },
-    "leaq Operation": {
-        "prefix":[
-            "leaq"
-        ],
-        "body": "leaq\t${1:src/imm},\t${2:dest}\n"
-    },
-    "notb Operation": {
-        "prefix":[
-            "notb"
-        ],
-        "body": "notb\t${1:dest}\n"
-    },
-    "notw Operation": {
-        "prefix":[
-            "notw"
-        ],
-        "body": "notw\t${1:dest}\n"
-    },
-    "notl Operation": {
-        "prefix":[
-            "notl"
-        ],
-        "body": "notl\t${1:dest}\n"
-    },
-    "notq Operation": {
-        "prefix":[
-            "notq"
-        ],
-        "body": "notq\t${1:dest}\n"
-    },
-    "pushb Stack Operation": {
-        "prefix":[
-            "pushb"
-        ],
-        "body": "pushb\t${1:ptr_reg}\n"
-    },
-    "pushw Stack Operation": {
-        "prefix":[
-            "pushw"
-        ],
-        "body": "pushw\t${1:ptr_reg}\n"
-    },
-    "pushl Stack Operation": {
-        "prefix":[
-            "pushl"
-        ],
-        "body": "pushl\t${1:ptr_reg}\n"
-    },
-    "pushq Stack Operation": {
-        "prefix":[
-            "pushq"
-        ],
-        "body": "pushq\t${1:ptr_reg}\n"
-    },
-    "popb Stack Operation": {
-        "prefix":[
-            "popb"
-        ],
-        "body": "popb\t${1:ptr_reg}\n"
-    },
-    "popw Stack Operation": {
-        "prefix":[
-            "popw"
-        ],
-        "body": "popw\t${1:ptr_reg}\n"
-    },
-    "popl Stack Operation": {
-        "prefix":[
-            "popl"
-        ],
-        "body": "popl\t${1:ptr_reg}\n"
-    },
-    "popq Stack Operation": {
-        "prefix":[
-            "popq"
-        ],
-        "body": "popq\t${1:ptr_reg}\n"
-    }
-    
+"byte Data Declare": {
+	"prefix":[
+		".byte"
+	],
+	"body": ".byte\t${1:byte_data}"
+},
+"word Data Declare": {
+	"prefix":[
+		".word"
+	],
+	"body": ".word\t${1:word_data}"
+},
+"long Data Declare": {
+	"prefix":[
+		".long"
+	],
+	"body": ".long\t${1:long_data}"
+},
+"quad Data Declare": {
+	"prefix":[
+		".quad"
+	],
+	"body": ".quad\t${1:quad_data}"
+},
+"int Data Declare": {
+	"prefix":[
+		".int"
+	],
+	"body": ".int\t${1:int_data}"
+},
+"ascii Data Declare": {
+	"prefix":[
+		".ascii"
+	],
+	"body": ".ascii\t${1:ascii_data}"
+},
+"asciz Data Declare": {
+	"prefix":[
+		".asciz"
+	],
+	"body": ".asciz\t${1:asciz_data}"
+},
+"addb Arthmetic Operation": {
+	"prefix":[
+		"addb"
+	],
+	"body": "addb\t${1:src/imm}, ${2:dest}\n"
+},
+"addw Arthmetic Operation": {
+	"prefix":[
+		"addw"
+	],
+	"body": "addw\t${1:src/imm}, ${2:dest}\n"
+},
+"addl Arthmetic Operation": {
+	"prefix":[
+		"addl"
+	],
+	"body": "addl\t${1:src/imm}, ${2:dest}\n"
+},
+"addq Arthmetic Operation": {
+	"prefix":[
+		"addq"
+	],
+	"body": "addq\t${1:src/imm}, ${2:dest}\n"
+},
+"subb Arthmetic Operation": {
+	"prefix":[
+		"subb"
+	],
+	"body": "subb\t${1:src/imm}, ${2:dest}\n"
+},
+"subw Arthmetic Operation": {
+	"prefix":[
+		"subw"
+	],
+	"body": "subw\t${1:src/imm}, ${2:dest}\n"
+},
+"subl Arthmetic Operation": {
+	"prefix":[
+		"subl"
+	],
+	"body": "subl\t${1:src/imm}, ${2:dest}\n"
+},
+"subq Arthmetic Operation": {
+	"prefix":[
+		"subq"
+	],
+	"body": "subq\t${1:src/imm}, ${2:dest}\n"
+},
+"mulb Arthmetic Operation": {
+	"prefix":[
+		"mulb"
+	],
+	"body": "mulb\t${1:src/imm}, ${2:dest}\n"
+},
+"mulw Arthmetic Operation": {
+	"prefix":[
+		"mulw"
+	],
+	"body": "mulw\t${1:src/imm}, ${2:dest}\n"
+},
+"mull Arthmetic Operation": {
+	"prefix":[
+		"mull"
+	],
+	"body": "mull\t${1:src/imm}, ${2:dest}\n"
+},
+"mulq Arthmetic Operation": {
+	"prefix":[
+		"mulq"
+	],
+	"body": "mulq\t${1:src/imm}, ${2:dest}\n"
+},
+"divb Arthmetic Operation": {
+	"prefix":[
+		"divb"
+	],
+	"body": "divb\t${1:src/imm}, ${2:dest}\n"
+},
+"divw Arthmetic Operation": {
+	"prefix":[
+		"divw"
+	],
+	"body": "divw\t${1:src/imm}, ${2:dest}\n"
+},
+"divl Arthmetic Operation": {
+	"prefix":[
+		"divl"
+	],
+	"body": "divl\t${1:src/imm}, ${2:dest}\n"
+},
+"divq Arthmetic Operation": {
+	"prefix":[
+		"divq"
+	],
+	"body": "divq\t${1:src/imm}, ${2:dest}\n"
+},
+"imulb Arthmetic Operation": {
+	"prefix":[
+		"imulb"
+	],
+	"body": "imulb\t${1:src/imm}, ${2:dest}\n"
+},
+"imulw Arthmetic Operation": {
+	"prefix":[
+		"imulw"
+	],
+	"body": "imulw\t${1:src/imm}, ${2:dest}\n"
+},
+"imull Arthmetic Operation": {
+	"prefix":[
+		"imull"
+	],
+	"body": "imull\t${1:src/imm}, ${2:dest}\n"
+},
+"imulq Arthmetic Operation": {
+	"prefix":[
+		"imulq"
+	],
+	"body": "imulq\t${1:src/imm}, ${2:dest}\n"
+},
+"idivb Arthmetic Operation": {
+	"prefix":[
+		"idivb"
+	],
+	"body": "idivb\t${1:src/imm}, ${2:dest}\n"
+},
+"idivw Arthmetic Operation": {
+	"prefix":[
+		"idivw"
+	],
+	"body": "idivw\t${1:src/imm}, ${2:dest}\n"
+},
+"idivl Arthmetic Operation": {
+	"prefix":[
+		"idivl"
+	],
+	"body": "idivl\t${1:src/imm}, ${2:dest}\n"
+},
+"idivq Arthmetic Operation": {
+	"prefix":[
+		"idivq"
+	],
+	"body": "idivq\t${1:src/imm}, ${2:dest}\n"
+},
+"cmpb Logical Operation": {
+	"prefix":[
+		"cmpb"
+	],
+	"body": "cmpb\t${2:op2}, ${1:op1}\n"
+},
+"cmpw Logical Operation": {
+	"prefix":[
+		"cmpw"
+	],
+	"body": "cmpw\t${2:op2}, ${1:op1}\n"
+},
+"cmpl Logical Operation": {
+	"prefix":[
+		"cmpl"
+	],
+	"body": "cmpl\t${2:op2}, ${1:op1}\n"
+},
+"cmpq Logical Operation": {
+	"prefix":[
+		"cmpq"
+	],
+	"body": "cmpq\t${2:op2}, ${1:op1}\n"
+},
+"testb Logical Operation": {
+	"prefix":[
+		"testb"
+	],
+	"body": "testb\t${2:op2}, ${1:op1}\n"
+},
+"testw Logical Operation": {
+	"prefix":[
+		"testw"
+	],
+	"body": "testw\t${2:op2}, ${1:op1}\n"
+},
+"testl Logical Operation": {
+	"prefix":[
+		"testl"
+	],
+	"body": "testl\t${2:op2}, ${1:op1}\n"
+},
+"testq Logical Operation": {
+	"prefix":[
+		"testq"
+	],
+	"body": "testq\t${2:op2}, ${1:op1}\n"
+},
+"salb Arthmetic Shift Operation": {
+	"prefix":[
+		"salb"
+	],
+	"body": "salb\t${1:src/imm}, ${2:dest}\n"
+},
+"salw Arthmetic Shift Operation": {
+	"prefix":[
+		"salw"
+	],
+	"body": "salw\t${1:src/imm}, ${2:dest}\n"
+},
+"sall Arthmetic Shift Operation": {
+	"prefix":[
+		"sall"
+	],
+	"body": "sall\t${1:src/imm}, ${2:dest}\n"
+},
+"salq Arthmetic Shift Operation": {
+	"prefix":[
+		"salq"
+	],
+	"body": "salq\t${1:src/imm}, ${2:dest}\n"
+},
+"shlb Arthmetic Shift Operation": {
+	"prefix":[
+		"shlb"
+	],
+	"body": "shlb\t${1:src/imm}, ${2:dest}\n"
+},
+"shlw Arthmetic Shift Operation": {
+	"prefix":[
+		"shlw"
+	],
+	"body": "shlw\t${1:src/imm}, ${2:dest}\n"
+},
+"shll Arthmetic Shift Operation": {
+	"prefix":[
+		"shll"
+	],
+	"body": "shll\t${1:src/imm}, ${2:dest}\n"
+},
+"shlq Arthmetic Shift Operation": {
+	"prefix":[
+		"shlq"
+	],
+	"body": "shlq\t${1:src/imm}, ${2:dest}\n"
+},
+"sarb Arthmetic Shift Operation": {
+	"prefix":[
+		"sarb"
+	],
+	"body": "sarb\t${1:src/imm}, ${2:dest}\n"
+},
+"sarw Arthmetic Shift Operation": {
+	"prefix":[
+		"sarw"
+	],
+	"body": "sarw\t${1:src/imm}, ${2:dest}\n"
+},
+"sarl Arthmetic Shift Operation": {
+	"prefix":[
+		"sarl"
+	],
+	"body": "sarl\t${1:src/imm}, ${2:dest}\n"
+},
+"sarq Arthmetic Shift Operation": {
+	"prefix":[
+		"sarq"
+	],
+	"body": "sarq\t${1:src/imm}, ${2:dest}\n"
+},
+"shrb Arthmetic Shift Operation": {
+	"prefix":[
+		"shrb"
+	],
+	"body": "shrb\t${1:src/imm}, ${2:dest}\n"
+},
+"shrw Arthmetic Shift Operation": {
+	"prefix":[
+		"shrw"
+	],
+	"body": "shrw\t${1:src/imm}, ${2:dest}\n"
+},
+"shrl Arthmetic Shift Operation": {
+	"prefix":[
+		"shrl"
+	],
+	"body": "shrl\t${1:src/imm}, ${2:dest}\n"
+},
+"shrq Arthmetic Shift Operation": {
+	"prefix":[
+		"shrq"
+	],
+	"body": "shrq\t${1:src/imm}, ${2:dest}\n"
+},
+"rolb Arthmetic Shift Operation": {
+	"prefix":[
+		"rolb"
+	],
+	"body": "rolb\t${1:src/imm}, ${2:dest}\n"
+},
+"rolw Arthmetic Shift Operation": {
+	"prefix":[
+		"rolw"
+	],
+	"body": "rolw\t${1:src/imm}, ${2:dest}\n"
+},
+"roll Arthmetic Shift Operation": {
+	"prefix":[
+		"roll"
+	],
+	"body": "roll\t${1:src/imm}, ${2:dest}\n"
+},
+"rolq Arthmetic Shift Operation": {
+	"prefix":[
+		"rolq"
+	],
+	"body": "rolq\t${1:src/imm}, ${2:dest}\n"
+},
+"rorb Arthmetic Shift Operation": {
+	"prefix":[
+		"rorb"
+	],
+	"body": "rorb\t${1:src/imm}, ${2:dest}\n"
+},
+"rorw Arthmetic Shift Operation": {
+	"prefix":[
+		"rorw"
+	],
+	"body": "rorw\t${1:src/imm}, ${2:dest}\n"
+},
+"rorl Arthmetic Shift Operation": {
+	"prefix":[
+		"rorl"
+	],
+	"body": "rorl\t${1:src/imm}, ${2:dest}\n"
+},
+"rorq Arthmetic Shift Operation": {
+	"prefix":[
+		"rorq"
+	],
+	"body": "rorq\t${1:src/imm}, ${2:dest}\n"
+},
+"rclb Arthmetic Shift Operation": {
+	"prefix":[
+		"rclb"
+	],
+	"body": "rclb\t${1:src/imm}, ${2:dest}\n"
+},
+"rclw Arthmetic Shift Operation": {
+	"prefix":[
+		"rclw"
+	],
+	"body": "rclw\t${1:src/imm}, ${2:dest}\n"
+},
+"rcll Arthmetic Shift Operation": {
+	"prefix":[
+		"rcll"
+	],
+	"body": "rcll\t${1:src/imm}, ${2:dest}\n"
+},
+"rclq Arthmetic Shift Operation": {
+	"prefix":[
+		"rclq"
+	],
+	"body": "rclq\t${1:src/imm}, ${2:dest}\n"
+},
+"rcrb Arthmetic Shift Operation": {
+	"prefix":[
+		"rcrb"
+	],
+	"body": "rcrb\t${1:src/imm}, ${2:dest}\n"
+},
+"rcrw Arthmetic Shift Operation": {
+	"prefix":[
+		"rcrw"
+	],
+	"body": "rcrw\t${1:src/imm}, ${2:dest}\n"
+},
+"rcrl Arthmetic Shift Operation": {
+	"prefix":[
+		"rcrl"
+	],
+	"body": "rcrl\t${1:src/imm}, ${2:dest}\n"
+},
+"rcrq Arthmetic Shift Operation": {
+	"prefix":[
+		"rcrq"
+	],
+	"body": "rcrq\t${1:src/imm}, ${2:dest}\n"
+},
+"andb Arthmetic Operation": {
+	"prefix":[
+		"andb"
+	],
+	"body": "andb\t${1:src}, ${2:dest}\n"
+},
+"andw Arthmetic Operation": {
+	"prefix":[
+		"andw"
+	],
+	"body": "andw\t${1:src}, ${2:dest}\n"
+},
+"andl Arthmetic Operation": {
+	"prefix":[
+		"andl"
+	],
+	"body": "andl\t${1:src}, ${2:dest}\n"
+},
+"andq Arthmetic Operation": {
+	"prefix":[
+		"andq"
+	],
+	"body": "andq\t${1:src}, ${2:dest}\n"
+},
+"orb Arthmetic Operation": {
+	"prefix":[
+		"orb"
+	],
+	"body": "orb\t\t${1:src}, ${2:dest}\n"
+},
+"orw Arthmetic Operation": {
+	"prefix":[
+		"orw"
+	],
+	"body": "orw\t\t${1:src}, ${2:dest}\n"
+},
+"orl Arthmetic Operation": {
+	"prefix":[
+		"orl"
+	],
+	"body": "orl\t\t${1:src}, ${2:dest}\n"
+},
+"orq Arthmetic Operation": {
+	"prefix":[
+		"orq"
+	],
+	"body": "orq\t\t${1:src}, ${2:dest}\n"
+},
+"xorb Arthmetic Operation": {
+	"prefix":[
+		"xorb"
+	],
+	"body": "xorb\t${1:src}, ${2:dest}\n"
+},
+"xorw Arthmetic Operation": {
+	"prefix":[
+		"xorw"
+	],
+	"body": "xorw\t${1:src}, ${2:dest}\n"
+},
+"xorl Arthmetic Operation": {
+	"prefix":[
+		"xorl"
+	],
+	"body": "xorl\t${1:src}, ${2:dest}\n"
+},
+"xorq Arthmetic Operation": {
+	"prefix":[
+		"xorq"
+	],
+	"body": "xorq\t${1:src}, ${2:dest}\n"
+},
+"movb Arthmetic Operation": {
+	"prefix":[
+		"movb"
+	],
+	"body": "movb\t${1:src}, ${2:dest}\n"
+},
+"movw Arthmetic Operation": {
+	"prefix":[
+		"movw"
+	],
+	"body": "movw\t${1:src}, ${2:dest}\n"
+},
+"movl Arthmetic Operation": {
+	"prefix":[
+		"movl"
+	],
+	"body": "movl\t${1:src}, ${2:dest}\n"
+},
+"movq Arthmetic Operation": {
+	"prefix":[
+		"movq"
+	],
+	"body": "movq\t${1:src}, ${2:dest}\n"
+},
+"leab Arthmetic Operation": {
+	"prefix":[
+		"leab"
+	],
+	"body": "leab\t${1:src}, ${2:dest}\n"
+},
+"leaw Arthmetic Operation": {
+	"prefix":[
+		"leaw"
+	],
+	"body": "leaw\t${1:src}, ${2:dest}\n"
+},
+"leal Arthmetic Operation": {
+	"prefix":[
+		"leal"
+	],
+	"body": "leal\t${1:src}, ${2:dest}\n"
+},
+"leaq Arthmetic Operation": {
+	"prefix":[
+		"leaq"
+	],
+	"body": "leaq\t${1:src}, ${2:dest}\n"
+},
+"notb Arthmetic Operation": {
+	"prefix":[
+		"notb"
+	],
+	"body": "notb\t${1:reg}\n"
+},
+"notw Arthmetic Operation": {
+	"prefix":[
+		"notw"
+	],
+	"body": "notw\t${1:reg}\n"
+},
+"notl Arthmetic Operation": {
+	"prefix":[
+		"notl"
+	],
+	"body": "notl\t${1:reg}\n"
+},
+"notq Arthmetic Operation": {
+	"prefix":[
+		"notq"
+	],
+	"body": "notq\t${1:reg}\n"
+},
+"pushb Stack Operation": {
+	"prefix":[
+		"pushb"
+	],
+	"body": "pushb\t${1:val/reg}\n"
+},
+"pushw Stack Operation": {
+	"prefix":[
+		"pushw"
+	],
+	"body": "pushw\t${1:val/reg}\n"
+},
+"pushl Stack Operation": {
+	"prefix":[
+		"pushl"
+	],
+	"body": "pushl\t${1:val/reg}\n"
+},
+"pushq Stack Operation": {
+	"prefix":[
+		"pushq"
+	],
+	"body": "pushq\t${1:val/reg}\n"
+},
+"popb Stack Operation": {
+	"prefix":[
+		"popb"
+	],
+	"body": "popb\t${1:val/reg}\n"
+},
+"popw Stack Operation": {
+	"prefix":[
+		"popw"
+	],
+	"body": "popw\t${1:val/reg}\n"
+},
+"popl Stack Operation": {
+	"prefix":[
+		"popl"
+	],
+	"body": "popl\t${1:val/reg}\n"
+},
+"popq Stack Operation": {
+	"prefix":[
+		"popq"
+	],
+	"body": "popq\t${1:val/reg}\n"
+},
+"loop Flow Operation": {
+	"prefix":[
+		"loop"
+	],
+	"body": "loop\t${1:label}\n"
+},
+"j Flow Operation": {
+	"prefix":[
+		"j"
+	],
+	"body": "j\t\t${1:label}\n"
+},
+"jmp Flow Operation": {
+	"prefix":[
+		"jmp"
+	],
+	"body": "jmp\t\t${1:label}\n"
+},
+"ja Flow Operation": {
+	"prefix":[
+		"ja"
+	],
+	"body": "ja\t\t${1:label}\n"
+},
+"jae Flow Operation": {
+	"prefix":[
+		"jae"
+	],
+	"body": "jae\t\t${1:label}\n"
+},
+"jb Flow Operation": {
+	"prefix":[
+		"jb"
+	],
+	"body": "jb\t\t${1:label}\n"
+},
+"jbe Flow Operation": {
+	"prefix":[
+		"jbe"
+	],
+	"body": "jbe\t\t${1:label}\n"
+},
+"je Flow Operation": {
+	"prefix":[
+		"je"
+	],
+	"body": "je\t\t${1:label}\n"
+},
+"jg Flow Operation": {
+	"prefix":[
+		"jg"
+	],
+	"body": "jg\t\t${1:label}\n"
+},
+"jge Flow Operation": {
+	"prefix":[
+		"jge"
+	],
+	"body": "jge\t\t${1:label}\n"
+},
+"jl Flow Operation": {
+	"prefix":[
+		"jl"
+	],
+	"body": "jl\t\t${1:label}\n"
+},
+"jle Flow Operation": {
+	"prefix":[
+		"jle"
+	],
+	"body": "jle\t\t${1:label}\n"
+},
+"jna Flow Operation": {
+	"prefix":[
+		"jna"
+	],
+	"body": "jna\t\t${1:label}\n"
+},
+"jnae Flow Operation": {
+	"prefix":[
+		"jnae"
+	],
+	"body": "jnae\t${1:label}\n"
+},
+"jnb Flow Operation": {
+	"prefix":[
+		"jnb"
+	],
+	"body": "jnb\t\t${1:label}\n"
+},
+"jnbe Flow Operation": {
+	"prefix":[
+		"jnbe"
+	],
+	"body": "jnbe\t${1:label}\n"
+},
+"jne Flow Operation": {
+	"prefix":[
+		"jne"
+	],
+	"body": "jne\t\t${1:label}\n"
+},
+"jng Flow Operation": {
+	"prefix":[
+		"jng"
+	],
+	"body": "jng\t\t${1:label}\n"
+},
+"jnge Flow Operation": {
+	"prefix":[
+		"jnge"
+	],
+	"body": "jnge\t${1:label}\n"
+},
+"jnl Flow Operation": {
+	"prefix":[
+		"jnl"
+	],
+	"body": "jnl\t\t${1:label}\n"
+},
+"jnle Flow Operation": {
+	"prefix":[
+		"jnle"
+	],
+	"body": "jnle\t${1:label}\n"
+},
+"jc Flow Operation": {
+	"prefix":[
+		"jc"
+	],
+	"body": "jc\t\t${1:label}\n"
+},
+"jo Flow Operation": {
+	"prefix":[
+		"jo"
+	],
+	"body": "jo\t\t${1:label}\n"
+},
+"jp Flow Operation": {
+	"prefix":[
+		"jp"
+	],
+	"body": "jp\t\t${1:label}\n"
+},
+"jpe Flow Operation": {
+	"prefix":[
+		"jpe"
+	],
+	"body": "jpe\t\t${1:label}\n"
+},
+"jpo Flow Operation": {
+	"prefix":[
+		"jpo"
+	],
+	"body": "jpo\t\t${1:label}\n"
+},
+"js Flow Operation": {
+	"prefix":[
+		"js"
+	],
+	"body": "js\t\t${1:label}\n"
+},
+"jz Flow Operation": {
+	"prefix":[
+		"jz"
+	],
+	"body": "jz\t\t${1:label}\n"
+},
+"jnc Flow Operation": {
+	"prefix":[
+		"jnc"
+	],
+	"body": "jnc\t\t${1:label}\n"
+},
+"jno Flow Operation": {
+	"prefix":[
+		"jno"
+	],
+	"body": "jno\t\t${1:label}\n"
+},
+"jnp Flow Operation": {
+	"prefix":[
+		"jnp"
+	],
+	"body": "jnp\t\t${1:label}\n"
+},
+"jns Flow Operation": {
+	"prefix":[
+		"jns"
+	],
+	"body": "jns\t\t${1:label}\n"
+},
+"jnz Flow Operation": {
+	"prefix":[
+		"jnz"
+	],
+	"body": "jnz\t\t${1:label}\n"
+},
+"jcxz Flow Operation": {
+	"prefix":[
+		"jcxz"
+	],
+	"body": "jcxz\t${1:label}\n"
+},
+"jecxz Flow Operation": {
+	"prefix":[
+		"jecxz"
+	],
+	"body": "jecxz\t${1:label}\n"
+}
+
 }

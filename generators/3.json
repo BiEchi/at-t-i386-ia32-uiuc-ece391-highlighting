@@ -1,72 +1,72 @@
-"incb Operation": {
+"incb Self-compute Operation": {
 	"prefix":[
 		"incb"
 	],
-	"body": "incb\t${1:src&dest}\n"
+	"body": "incb\t${1:reg}\n"
 },
-"incw Operation": {
+"incw Self-compute Operation": {
 	"prefix":[
 		"incw"
 	],
-	"body": "incw\t${1:src&dest}\n"
+	"body": "incw\t${1:reg}\n"
 },
-"incl Operation": {
+"incl Self-compute Operation": {
 	"prefix":[
 		"incl"
 	],
-	"body": "incl\t${1:src&dest}\n"
+	"body": "incl\t${1:reg}\n"
 },
-"incq Operation": {
+"incq Self-compute Operation": {
 	"prefix":[
 		"incq"
 	],
-	"body": "incq\t${1:src&dest}\n"
+	"body": "incq\t${1:reg}\n"
 },
-"decb Operation": {
+"decb Self-compute Operation": {
 	"prefix":[
 		"decb"
 	],
-	"body": "decb\t${1:src&dest}\n"
+	"body": "decb\t${1:reg}\n"
 },
-"decw Operation": {
+"decw Self-compute Operation": {
 	"prefix":[
 		"decw"
 	],
-	"body": "decw\t${1:src&dest}\n"
+	"body": "decw\t${1:reg}\n"
 },
-"decl Operation": {
+"decl Self-compute Operation": {
 	"prefix":[
 		"decl"
 	],
-	"body": "decl\t${1:src&dest}\n"
+	"body": "decl\t${1:reg}\n"
 },
-"decq Operation": {
+"decq Self-compute Operation": {
 	"prefix":[
 		"decq"
 	],
-	"body": "decq\t${1:src&dest}\n"
+	"body": "decq\t${1:reg}\n"
 },
-"negb Operation": {
+"negb Self-compute Operation": {
 	"prefix":[
 		"negb"
 	],
-	"body": "negb\t${1:src&dest}\n"
+	"body": "negb\t${1:reg}\n"
 },
-"negw Operation": {
+"negw Self-compute Operation": {
 	"prefix":[
 		"negw"
 	],
-	"body": "negw\t${1:src&dest}\n"
+	"body": "negw\t${1:reg}\n"
 },
-"negl Operation": {
+"negl Self-compute Operation": {
 	"prefix":[
 		"negl"
 	],
-	"body": "negl\t${1:src&dest}\n"
+	"body": "negl\t${1:reg}\n"
 },
-"negq Operation": {
+"negq Self-compute Operation": {
 	"prefix":[
 		"negq"
 	],
-	"body": "negq\t${1:src&dest}\n"
+	"body": "negq\t${1:reg}\n"
 },

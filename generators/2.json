@@ -1,144 +1,144 @@
-"addb Operation": {
+"addb Arthmetic Operation": {
 	"prefix":[
 		"addb"
 	],
-	"body": "addb\t${1:src/imm},\t${2:dest}\n"
+	"body": "addb\t${1:src/imm}, ${2:dest}\n"
 },
-"addw Operation": {
+"addw Arthmetic Operation": {
 	"prefix":[
 		"addw"
 	],
-	"body": "addw\t${1:src/imm},\t${2:dest}\n"
+	"body": "addw\t${1:src/imm}, ${2:dest}\n"
 },
-"addl Operation": {
+"addl Arthmetic Operation": {
 	"prefix":[
 		"addl"
 	],
-	"body": "addl\t${1:src/imm},\t${2:dest}\n"
+	"body": "addl\t${1:src/imm}, ${2:dest}\n"
 },
-"addq Operation": {
+"addq Arthmetic Operation": {
 	"prefix":[
 		"addq"
 	],
-	"body": "addq\t${1:src/imm},\t${2:dest}\n"
+	"body": "addq\t${1:src/imm}, ${2:dest}\n"
 },
-"subb Operation": {
+"subb Arthmetic Operation": {
 	"prefix":[
 		"subb"
 	],
-	"body": "subb\t${1:src/imm},\t${2:dest}\n"
+	"body": "subb\t${1:src/imm}, ${2:dest}\n"
 },
-"subw Operation": {
+"subw Arthmetic Operation": {
 	"prefix":[
 		"subw"
 	],
-	"body": "subw\t${1:src/imm},\t${2:dest}\n"
+	"body": "subw\t${1:src/imm}, ${2:dest}\n"
 },
-"subl Operation": {
+"subl Arthmetic Operation": {
 	"prefix":[
 		"subl"
 	],
-	"body": "subl\t${1:src/imm},\t${2:dest}\n"
+	"body": "subl\t${1:src/imm}, ${2:dest}\n"
 },
-"subq Operation": {
+"subq Arthmetic Operation": {
 	"prefix":[
 		"subq"
 	],
-	"body": "subq\t${1:src/imm},\t${2:dest}\n"
+	"body": "subq\t${1:src/imm}, ${2:dest}\n"
 },
-"mulb Operation": {
+"mulb Arthmetic Operation": {
 	"prefix":[
 		"mulb"
 	],
-	"body": "mulb\t${1:src/imm},\t${2:dest}\n"
+	"body": "mulb\t${1:src/imm}, ${2:dest}\n"
 },
-"mulw Operation": {
+"mulw Arthmetic Operation": {
 	"prefix":[
 		"mulw"
 	],
-	"body": "mulw\t${1:src/imm},\t${2:dest}\n"
+	"body": "mulw\t${1:src/imm}, ${2:dest}\n"
 },
-"mull Operation": {
+"mull Arthmetic Operation": {
 	"prefix":[
 		"mull"
 	],
-	"body": "mull\t${1:src/imm},\t${2:dest}\n"
+	"body": "mull\t${1:src/imm}, ${2:dest}\n"
 },
-"mulq Operation": {
+"mulq Arthmetic Operation": {
 	"prefix":[
 		"mulq"
 	],
-	"body": "mulq\t${1:src/imm},\t${2:dest}\n"
+	"body": "mulq\t${1:src/imm}, ${2:dest}\n"
 },
-"divb Operation": {
+"divb Arthmetic Operation": {
 	"prefix":[
 		"divb"
 	],
-	"body": "divb\t${1:src/imm},\t${2:dest}\n"
+	"body": "divb\t${1:src/imm}, ${2:dest}\n"
 },
-"divw Operation": {
+"divw Arthmetic Operation": {
 	"prefix":[
 		"divw"
 	],
-	"body": "divw\t${1:src/imm},\t${2:dest}\n"
+	"body": "divw\t${1:src/imm}, ${2:dest}\n"
 },
-"divl Operation": {
+"divl Arthmetic Operation": {
 	"prefix":[
 		"divl"
 	],
-	"body": "divl\t${1:src/imm},\t${2:dest}\n"
+	"body": "divl\t${1:src/imm}, ${2:dest}\n"
 },
-"divq Operation": {
+"divq Arthmetic Operation": {
 	"prefix":[
 		"divq"
 	],
-	"body": "divq\t${1:src/imm},\t${2:dest}\n"
+	"body": "divq\t${1:src/imm}, ${2:dest}\n"
 },
-"imulb Operation": {
+"imulb Arthmetic Operation": {
 	"prefix":[
 		"imulb"
 	],
-	"body": "imulb\t${1:src/imm},\t${2:dest}\n"
+	"body": "imulb\t${1:src/imm}, ${2:dest}\n"
 },
-"imulw Operation": {
+"imulw Arthmetic Operation": {
 	"prefix":[
 		"imulw"
 	],
-	"body": "imulw\t${1:src/imm},\t${2:dest}\n"
+	"body": "imulw\t${1:src/imm}, ${2:dest}\n"
 },
-"imull Operation": {
+"imull Arthmetic Operation": {
 	"prefix":[
 		"imull"
 	],
-	"body": "imull\t${1:src/imm},\t${2:dest}\n"
+	"body": "imull\t${1:src/imm}, ${2:dest}\n"
 },
-"imulq Operation": {
+"imulq Arthmetic Operation": {
 	"prefix":[
 		"imulq"
 	],
-	"body": "imulq\t${1:src/imm},\t${2:dest}\n"
+	"body": "imulq\t${1:src/imm}, ${2:dest}\n"
 },
-"idivb Operation": {
+"idivb Arthmetic Operation": {
 	"prefix":[
 		"idivb"
 	],
-	"body": "idivb\t${1:src/imm},\t${2:dest}\n"
+	"body": "idivb\t${1:src/imm}, ${2:dest}\n"
 },
-"idivw Operation": {
+"idivw Arthmetic Operation": {
 	"prefix":[
 		"idivw"
 	],
-	"body": "idivw\t${1:src/imm},\t${2:dest}\n"
+	"body": "idivw\t${1:src/imm}, ${2:dest}\n"
 },
-"idivl Operation": {
+"idivl Arthmetic Operation": {
 	"prefix":[
 		"idivl"
 	],
-	"body": "idivl\t${1:src/imm},\t${2:dest}\n"
+	"body": "idivl\t${1:src/imm}, ${2:dest}\n"
 },
-"idivq Operation": {
+"idivq Arthmetic Operation": {
 	"prefix":[
 		"idivq"
 	],
-	"body": "idivq\t${1:src/imm},\t${2:dest}\n"
+	"body": "idivq\t${1:src/imm}, ${2:dest}\n"
 },
