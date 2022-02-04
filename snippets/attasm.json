@@ -3,43 +3,43 @@
 	"prefix":[
 		".byte"
 	],
-	"body": ".byte\t${1:byte_data}"
+	"body": ".byte\t${1:byte_data}\n"
 },
 "word Data Declare": {
 	"prefix":[
 		".word"
 	],
-	"body": ".word\t${1:word_data}"
+	"body": ".word\t${1:word_data}\n"
 },
 "long Data Declare": {
 	"prefix":[
 		".long"
 	],
-	"body": ".long\t${1:long_data}"
+	"body": ".long\t${1:long_data}\n"
 },
 "quad Data Declare": {
 	"prefix":[
 		".quad"
 	],
-	"body": ".quad\t${1:quad_data}"
+	"body": ".quad\t${1:quad_data}\n"
 },
 "int Data Declare": {
 	"prefix":[
 		".int"
 	],
-	"body": ".int\t${1:int_data}"
+	"body": ".int\t${1:int_data}\n"
 },
 "ascii Data Declare": {
 	"prefix":[
 		".ascii"
 	],
-	"body": ".ascii\t${1:ascii_data}"
+	"body": ".ascii\t${1:ascii_data}\n"
 },
 "asciz Data Declare": {
 	"prefix":[
 		".asciz"
 	],
-	"body": ".asciz\t${1:asciz_data}"
+	"body": ".asciz\t${1:asciz_data}\n"
 },
 "addb Arthmetic Operation": {
 	"prefix":[
@@ -617,215 +617,238 @@
 	],
 	"body": "popq\t${1:val/reg}\n"
 },
+"call Flow Operation": {
+	"prefix":[
+		"call"
+	],
+	"body": "call\t${1:label/imm}\n"
+},
+"int Flow Operation": {
+	"prefix":[
+		"int"
+	],
+	"body": "int\t\t${1:label/imm}\n"
+},
 "loop Flow Operation": {
 	"prefix":[
 		"loop"
 	],
-	"body": "loop\t${1:label}\n"
+	"body": "loop\t${1:label/imm}\n"
 },
 "j Flow Operation": {
 	"prefix":[
 		"j"
 	],
-	"body": "j\t\t${1:label}\n"
+	"body": "j\t\t${1:label/imm}\n"
 },
 "jmp Flow Operation": {
 	"prefix":[
 		"jmp"
 	],
-	"body": "jmp\t\t${1:label}\n"
+	"body": "jmp\t\t${1:label/imm}\n"
 },
 "ja Flow Operation": {
 	"prefix":[
 		"ja"
 	],
-	"body": "ja\t\t${1:label}\n"
+	"body": "ja\t\t${1:label/imm}\n"
 },
 "jae Flow Operation": {
 	"prefix":[
 		"jae"
 	],
-	"body": "jae\t\t${1:label}\n"
+	"body": "jae\t\t${1:label/imm}\n"
 },
 "jb Flow Operation": {
 	"prefix":[
 		"jb"
 	],
-	"body": "jb\t\t${1:label}\n"
+	"body": "jb\t\t${1:label/imm}\n"
 },
 "jbe Flow Operation": {
 	"prefix":[
 		"jbe"
 	],
-	"body": "jbe\t\t${1:label}\n"
+	"body": "jbe\t\t${1:label/imm}\n"
 },
 "je Flow Operation": {
 	"prefix":[
 		"je"
 	],
-	"body": "je\t\t${1:label}\n"
+	"body": "je\t\t${1:label/imm}\n"
 },
 "jg Flow Operation": {
 	"prefix":[
 		"jg"
 	],
-	"body": "jg\t\t${1:label}\n"
+	"body": "jg\t\t${1:label/imm}\n"
 },
 "jge Flow Operation": {
 	"prefix":[
 		"jge"
 	],
-	"body": "jge\t\t${1:label}\n"
+	"body": "jge\t\t${1:label/imm}\n"
 },
 "jl Flow Operation": {
 	"prefix":[
 		"jl"
 	],
-	"body": "jl\t\t${1:label}\n"
+	"body": "jl\t\t${1:label/imm}\n"
 },
 "jle Flow Operation": {
 	"prefix":[
 		"jle"
 	],
-	"body": "jle\t\t${1:label}\n"
+	"body": "jle\t\t${1:label/imm}\n"
 },
 "jna Flow Operation": {
 	"prefix":[
 		"jna"
 	],
-	"body": "jna\t\t${1:label}\n"
+	"body": "jna\t\t${1:label/imm}\n"
 },
 "jnae Flow Operation": {
 	"prefix":[
 		"jnae"
 	],
-	"body": "jnae\t${1:label}\n"
+	"body": "jnae\t${1:label/imm}\n"
 },
 "jnb Flow Operation": {
 	"prefix":[
 		"jnb"
 	],
-	"body": "jnb\t\t${1:label}\n"
+	"body": "jnb\t\t${1:label/imm}\n"
 },
 "jnbe Flow Operation": {
 	"prefix":[
 		"jnbe"
 	],
-	"body": "jnbe\t${1:label}\n"
+	"body": "jnbe\t${1:label/imm}\n"
 },
 "jne Flow Operation": {
 	"prefix":[
 		"jne"
 	],
-	"body": "jne\t\t${1:label}\n"
+	"body": "jne\t\t${1:label/imm}\n"
 },
 "jng Flow Operation": {
 	"prefix":[
 		"jng"
 	],
-	"body": "jng\t\t${1:label}\n"
+	"body": "jng\t\t${1:label/imm}\n"
 },
 "jnge Flow Operation": {
 	"prefix":[
 		"jnge"
 	],
-	"body": "jnge\t${1:label}\n"
+	"body": "jnge\t${1:label/imm}\n"
 },
 "jnl Flow Operation": {
 	"prefix":[
 		"jnl"
 	],
-	"body": "jnl\t\t${1:label}\n"
+	"body": "jnl\t\t${1:label/imm}\n"
 },
 "jnle Flow Operation": {
 	"prefix":[
 		"jnle"
 	],
-	"body": "jnle\t${1:label}\n"
+	"body": "jnle\t${1:label/imm}\n"
 },
 "jc Flow Operation": {
 	"prefix":[
 		"jc"
 	],
-	"body": "jc\t\t${1:label}\n"
+	"body": "jc\t\t${1:label/imm}\n"
 },
 "jo Flow Operation": {
 	"prefix":[
 		"jo"
 	],
-	"body": "jo\t\t${1:label}\n"
+	"body": "jo\t\t${1:label/imm}\n"
 },
 "jp Flow Operation": {
 	"prefix":[
 		"jp"
 	],
-	"body": "jp\t\t${1:label}\n"
+	"body": "jp\t\t${1:label/imm}\n"
 },
 "jpe Flow Operation": {
 	"prefix":[
 		"jpe"
 	],
-	"body": "jpe\t\t${1:label}\n"
+	"body": "jpe\t\t${1:label/imm}\n"
 },
 "jpo Flow Operation": {
 	"prefix":[
 		"jpo"
 	],
-	"body": "jpo\t\t${1:label}\n"
+	"body": "jpo\t\t${1:label/imm}\n"
 },
 "js Flow Operation": {
 	"prefix":[
 		"js"
 	],
-	"body": "js\t\t${1:label}\n"
+	"body": "js\t\t${1:label/imm}\n"
 },
 "jz Flow Operation": {
 	"prefix":[
 		"jz"
 	],
-	"body": "jz\t\t${1:label}\n"
+	"body": "jz\t\t${1:label/imm}\n"
 },
 "jnc Flow Operation": {
 	"prefix":[
 		"jnc"
 	],
-	"body": "jnc\t\t${1:label}\n"
+	"body": "jnc\t\t${1:label/imm}\n"
 },
 "jno Flow Operation": {
 	"prefix":[
 		"jno"
 	],
-	"body": "jno\t\t${1:label}\n"
+	"body": "jno\t\t${1:label/imm}\n"
 },
 "jnp Flow Operation": {
 	"prefix":[
 		"jnp"
 	],
-	"body": "jnp\t\t${1:label}\n"
+	"body": "jnp\t\t${1:label/imm}\n"
 },
 "jns Flow Operation": {
 	"prefix":[
 		"jns"
 	],
-	"body": "jns\t\t${1:label}\n"
+	"body": "jns\t\t${1:label/imm}\n"
 },
 "jnz Flow Operation": {
 	"prefix":[
 		"jnz"
 	],
-	"body": "jnz\t\t${1:label}\n"
+	"body": "jnz\t\t${1:label/imm}\n"
 },
 "jcxz Flow Operation": {
 	"prefix":[
 		"jcxz"
 	],
-	"body": "jcxz\t${1:label}\n"
+	"body": "jcxz\t${1:label/imm}\n"
 },
 "jecxz Flow Operation": {
 	"prefix":[
 		"jecxz"
 	],
-	"body": "jecxz\t${1:label}\n"
+	"body": "jecxz\t${1:label/imm}\n"
+},
+"align Memory Alignment": {
+	"prefix":[
+		".align"
+	],
+	"body": ".align\t${1:.byte=1,.int=2,.long=4,.quad=8}\n"
+},
+"Prototype Comment": {
+	"prefix":[
+		"//s"
+	],
+	"body": "// ${1:type_t} ${2:name}(${3:args})\n"
 }
-
 }

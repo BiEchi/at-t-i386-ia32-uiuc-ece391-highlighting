@@ -29,12 +29,46 @@
         },
         "file.h": {
             "iconPath": "../graphs/h.png"
+        },
+        "file.o": {
+            "iconPath": "../graphs/o.png"
+        },
+        "FILE": {
+            "iconPath": "../graphs/file.png"
+        },
+        "FOLDER": {
+            "iconPath": "../graphs/folder.png"
+        },
+        "UTEST": {
+            "iconPath": "../graphs/utest.svg"
+        },
+        "KTEST": {
+            "iconPath": "../graphs/ktest.svg"
+        },
+        "file.sh": {
+            "iconPath": "../graphs/sh.png"
+        },
+        "SHIFT_SH":{
+            "iconPath": "../graphs/shift.sh.svg"
+        },
+        "RUN_SH":{
+            "iconPath": "../graphs/run.sh.svg"
         }
     },
+    "file": "FILE",
+    "folder": "FOLDER",
     "fileNames":{
         "makefile": "MAKEFILE",
         "Makefile": "MAKEFILE",
-        "MAKEFILE": "MAKEFILE"
+        "MAKEFILE": "MAKEFILE",
+        "KTest": "KTEST",
+        "KTEST": "KTEST",
+        "ktest": "KTEST",
+        "UTest": "UTEST",
+        "UTEST": "UTEST",
+        "utest": "UTEST",
+        "shift.sh": "SHIFT_SH",
+        "run.sh": "RUN_SH"
     },
     "fileExtensions": {
         "S": "file.S",
@@ -45,6 +79,8 @@
         "DIFF": "file.diff",
         "TXT": "file.txt",
         "MD": "file.md",
-        "H": "file.h"
+        "H": "file.h",
+        "O": "file.o",
+        "SH": "file.sh"
     }
 }

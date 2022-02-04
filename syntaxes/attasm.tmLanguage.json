@@ -14,20 +14,15 @@
 			"patterns": [
 				{
 					"name": "markup.bold.preprocess",
-					"match": "\\.data|\\.text|\\.globl|\\.global|.end"
+					"match": "\\.data|\\.text|\\.globl|\\.global|\\.end"
 				},
 				{
 					"name": "keyword.datatype.asm",
-					"match": "\\.byte|\\.word|\\.long|\\.quad|\\.int|\\.ascii|\\.asciz"
+					"match": "\\.byte|\\.word|\\.long|\\.quad|\\.int|\\.ascii|\\.asciz|\\.align"
 				},
 				{
 					"name": "support.function.label",
 					"match": "^(?!#).*\\:"
-				},
-				{
-					"name": "support.function.label.jump",
-					"begin": "j",
-					"end": "\n"
 				},
 				{
 					"name": "keyword.operator.new.arithmetic",
@@ -50,10 +45,6 @@
 					"match": "\\b(leab|leaw|leal|leaq)\\b"
 				},
 				{
-					"name": "keyword.operator.new.call",
-					"match": "\\b(call|int)\\b"
-				},
-				{
 					"name": "keyword.operator.new.stack",
 					"match": "\\b(pushb|pushw|pushl|pushq|popb|popw|popl|popq)\\b"
 				},
@@ -66,16 +57,25 @@
 					"match": "\\b(nop)\\b"
 				},
 				{
-					"name": "keyword.control.asm",
-					"match": "\\b(leave|ret|loop|j|jmp|ja|jae|jb|jbe|je|jg|jge|jl|jle|jna|jnae|jnb|jnbe|jne|jng|jnge|jnl|jnle|jc|jo|jp|jpe|jpo|js|jz|jnc|jno|jnp|jns|jnz|jcxz|jecxz)\\b"
+					"name": "keyword.control.jump",
+					"match": "\\b(enter|leave|ret|loop|j|jmp|ja|jae|jb|jbe|je|jg|jge|jl|jle|jna|jnae|jnb|jnbe|jne|jng|jnge|jnl|jnle|jc|jo|jp|jpe|jpo|js|jz|jnc|jno|jnp|jns|jnz|jcxz|jecxz)\\b"
+				},
+				{
+					"name": "keyword.control.call",
+					"match": "\\b(call|int)\\b"
 				},
 				{
 					"name": "variable.parameter.register",
-					"match": "^%.*|eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dc|dl|dr|edi|eip|esp|ebp|esi"
+					"match": "^%.*|eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dx|dl|dr|edi|di|esi|si|eip|esp|ebp"
 				},
 				{
 					"name": "comment.line.asm",
 					"begin": "#",
+					"end": "\n"
+				},
+				{
+					"name": "markup.inline.raw",
+					"begin": "// ",
 					"end": "\n"
 				},
 				{

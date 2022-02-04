@@ -6,6 +6,22 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 
 
+## [2.4.0] - 2022.1.31
+
+### Added
+
+-   Completed the `.align` support.
+
+
+
+## [2.3.0] - 2022.1.30
+
+### Changed
+
+-   Made snippets more arranged.
+
+
+
 ## [2.0.5] - 2022.1.30
 
 ### Added
