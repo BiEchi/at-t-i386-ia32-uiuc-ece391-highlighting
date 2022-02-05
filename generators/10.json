@@ -1,6 +1,0 @@
-"align Memory Alignment": {
-	"prefix":[
-		".align"
-	],
-	"body": ".align\t${1:.byte=1,.int=2,.long=4,.quad=8}\n"
-},

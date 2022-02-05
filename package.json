@@ -1,32 +1,36 @@
 {
-    "name": "at-t-i386-ia32-uiuc-ece391-highlighting",
+	"name": "at-t-i386-ia32-uiuc-ece391-highlighting",
     "displayName": "AT&T i386 IA32 UIUC ECE391 GCC Highlighting",
     "description": "A grammar highlighting and auto-completing extension for AT&T Assembly language grammar support, with format to be i386/IA32, which is used by UIUC ECE391 course.",
-    "version": "2.5.0",
-    "icon": "graphs/icon.png",
-    "publisher": "JackBAI",
-    "engines": {
-        "vscode": "^1.63.0"
-    },
-	"author": {
-		"email": "haob2@illinois.edu",
-    	"name": "Hao Bai",
-    	"url": "https://jackgetup.com"
+	"license": "MIT",
+	"version": "3.0.0",
+	"icon": "graphs/icon.png",
+	"publisher": "JackBAI",
+	"bugs": {
+		"url": "https://github.com/BiEchi/at-t-i386-ia32-uiuc-ece391-highlighting/issues",
+		"email": "haob2@illinois.edu"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BiEchi/at-t-i386-ia32-uiuc-ece391-highlighting"
 	},
     "categories": [
         "Programming Languages",
 		"Snippets",
         "Themes"
     ],
-    "activationEvents": [
-        "onLanguage:attasm"
-    ],
-    "main": "./semantic/extension.ts",
-	"configurationDefaults": {
-		"attasm": {
-			"editor.semanticHighlighting.enabled": true
-		}
+	"author": {
+		"email": "haob2@illinois.edu",
+    	"name": "Hao Bai",
+    	"url": "https://jackgetup.com"
 	},
+	"engines": {
+		"vscode": "^1.63.0"
+	},
+	"activationEvents": [
+		"onLanguage:attasm"
+	],
+	"main": "./out/client/src/extension",
 	"contributes": {
 		"languages": [
 			{
@@ -52,12 +56,6 @@
 				"path": "./syntaxes/attasm.tmLanguage.json"
 			}
 		],
-		"snippets": [
-			{
-				"language": "attasm",
-				"path": "./snippets/attasm.json"
-			}
-		],
 		"iconThemes": [
 			{
 			  "id": "ece391",
@@ -66,23 +64,20 @@
 			}
 		]
 	},
+	"scripts": {
+		"vscode:prepublish": "npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild client/src/extension.ts server/src/*.ts --bundle --outdir=out --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"postinstall": "cd client && npm install && cd ../server && npm install && cd .."
+	},
 	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.18.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"tslint": "^5.12.1",
-		"vscode-test": "^1.0.2"
-	},
-	"bugs": {
-		"url": "https://github.com/BiEchi/at-t-i386-ia32-uiuc-ece391-highlighting/issues",
-		"email": "haob2@illinois.edu"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/BiEchi/at-t-i386-ia32-uiuc-ece391-highlighting"
+		"@types/mocha": "^8.2.1",
+		"@types/node": "^12.20.5",
+		"@typescript-eslint/parser": "^5.3.1",
+		"esbuild": "^0.11.23",
+		"eslint": "^8.2.0",
+		"mocha": "^8.3.1",
+		"typescript": "^3.9.9"
 	}
 }
