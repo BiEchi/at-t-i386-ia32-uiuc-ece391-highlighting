@@ -50,12 +50,12 @@ export function generateDiagnostics(diagnosticInfo: DiagnosticInfo, code: Code) 
 	/** LINE checking */
 	for (let idx = 0; idx < code.instructions.length; idx++) {
 		instruction = code.instructions[idx];
-
 		// Skip the instruction if it is not found
 		if (!(instruction.flags & INSTFLAG.isFound)) {
 			continue;
 		}
 
+		
 		// Check for incomplete/illegal instructions
 		if (diagnosticInfo.settings.showIllegalInstructions && (instruction.flags & INSTFLAG.isIncomplete)) {
 			generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Error, [], "Illegal or incomplete instruction.", instruction.line,
@@ -74,10 +74,7 @@ export function generateDiagnostics(diagnosticInfo: DiagnosticInfo, code: Code) 
 			case OPTYPE.arithmeticOperation:
 				if (instruction.immVal >= 2147483647 || instruction.immVal < -2147483646) {
 					generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Error, [], "Immediate value is out of range.", instruction.line, "");
-				} else if (instruction.immValType == '#' && instruction.immVal >= 16) {
-					generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "Immediate value is out of range.", instruction.line,
-						"The maximum positive immediate value allowed is 15 (x000F). The number you put here will be interpreted as a negative number.");
-				}
+				} 
 				break;
 			default:
 				break;
@@ -87,7 +84,7 @@ export function generateDiagnostics(diagnosticInfo: DiagnosticInfo, code: Code) 
 
 
 // Generate and push a diagnostic into diagnostics array
-function generateDiagnostic(diagnosticInfo: DiagnosticInfo, severity: DiagnosticSeverity, tags: DiagnosticTag[], message: string, line: number, relatedInfo: string, length?: number) {
+export function generateDiagnostic(diagnosticInfo: DiagnosticInfo, severity: DiagnosticSeverity, tags: DiagnosticTag[], message: string, line: number, relatedInfo: string, length?: number) {
 	if (length == undefined) {
 		length = 1;
 	}
@@ -103,7 +100,6 @@ function generateDiagnostic(diagnosticInfo: DiagnosticInfo, severity: Diagnostic
 		tags: tags
 	};
 	// Pass related info
-	// if (relatedInfo && hasDiagnosticRelatedInformationCapability) {
 	if (relatedInfo) {
 		diagnostic.relatedInformation = [
 			{

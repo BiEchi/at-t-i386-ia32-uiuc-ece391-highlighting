@@ -89,6 +89,9 @@ mp1_rtc_tasklet:
 	pushl	%edi
 	pushl	%ebx
 
+	adkk	%eax # should be invalid!
+	addl	$9999999999999999, %eax # should be invalid!
+
 	movl	mp1_list_head, %esi
 
 mp1_rtc_tasklet_builtin_nextnode:

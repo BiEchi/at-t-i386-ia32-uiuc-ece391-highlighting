@@ -26,6 +26,7 @@ import {
 
 import {
   generateDiagnostics,
+  generateDiagnostic,
   MESSAGE_POSSIBLE_SUBROUTINE,
 } from './diagnostic';
 
@@ -120,7 +121,7 @@ const defaultSettings: ExtensionSettings = {
   version: 'v2',
   showWarnings: true,
   showErrors: true,
-  showIllegalInstructions: false,
+  showIllegalInstructions: true,
   enableSubroutineChecking: true,
   enableUnrolledLoopChecking: true,
 };
@@ -172,8 +173,6 @@ let LabelList: Label[];
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
-  // URI have more info?
-  // change.document.uri
   const code = new Code(change.document.getText());
   validateTextDocument(change.document, code);
   updateCompletionItems(code);
@@ -197,8 +196,20 @@ export async function validateTextDocument(textDocument: TextDocument, code: Cod
     settings: settings
   };
 
-  // Generate diagnostics
-  generateDiagnostics(diagnosticInfo, code);
+	// Generate diagnostics
+	generateDiagnostics(diagnosticInfo, code);
+	// FOR TEST
+	const diagnostic: Diagnostic = {
+		severity: DiagnosticSeverity.Error,
+		range: {
+			start: { line: 0, character: 0 },
+			end: { line: 4, character: 0 }
+		},
+		message: "Fuck you VS Code!",
+		source: "AT&T x86_32 Assembly",
+		tags: null
+	};
+	diagnostics.push(diagnostic);
   // Send the computed diagnostics to VSCode.
   connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
 }
@@ -266,7 +277,7 @@ export function provideDefinition(params: DeclarationParams): Location | undefin
   while (start > 0 && isAlphaNumeric(docstr[start - 1])) {
     start--;
   }
-  // point end to the last line of file
+  // Point "end" to the last line of file
   while (isAlphaNumeric(docstr[end])) {
     end++;
   }
@@ -308,7 +319,7 @@ export function provideCompletionResolve(item: CompletionItem): CompletionItem {
 	}
 	else if (item.data === OPNUM.DIRECTIVE_GLOBAL) {
 		item.detail = 'Declare the export of a subroutine.';
-		item.insertText = 'global\t{$1:label}';
+		item.insertText = 'global\t${1:label}';
 		item.insertTextFormat = InsertTextFormat.Snippet;
 		item.documentation = 'Export the subroutine to the caller, most commonly a C program.';
 	}
