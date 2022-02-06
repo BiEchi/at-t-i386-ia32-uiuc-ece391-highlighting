@@ -53,10 +53,71 @@ export function generateDiagnostics(diagnosticInfo: DiagnosticInfo, code: Code) 
 		return;
 	}
 	
-	/** LINE checking */
-	for (let idx = 0; idx < code.instructions.length; idx++) {
+	// Iterate through all lines
+	for (let idx: number = 0; idx < code.instructions.length; idx++) {
 		instruction = code.instructions[idx];
 
+		/* Block Checking */
+		// Alignment issues, backward checking
+		if (instruction.line < code.textLine && instruction.line > code.dataLine && instruction.optype == OPTYPE.directiveNumber && instruction.name != '.align' /*&& !instruction.memArray buggy, we only want jump tables to be examined*/){
+			let instructionInner: Instruction;
+			let alignFlag: boolean = false;
+			let alignVal: number = 0;
+			// an alignment at any line is okay
+			for (let idxInner:number = idx-1; idxInner > 0; idxInner--) {
+				instructionInner = code.instructions[idxInner];
+				if (instructionInner.name == '.align') {
+					alignFlag = true;
+					alignVal = instructionInner.immVal;
+					break;
+				}
+			}
+			if (alignFlag == false) {
+				generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "No alignment in memory", instruction.line,
+					"It's strongly recommended to set an alignment before data with more than 2 bytes.");
+			} else if (!typeMatch(instruction.name, alignVal)) {
+				generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "Alignment type wrong", instructionInner.line,
+					"The alignment does not fix in the data type. You should use 2 for short/word, 4 for long, and 8 for quad.");
+			}
+		}
+
+		// Calling issues, fowared & backward checking
+		if (instruction.line < code.endLine && instruction.line > code.textLine && instruction.name == "enter") {
+			// an alignment at any line is okay
+			for (let idxInner: number = idx+1; idxInner < idx+4; idxInner++) {
+				if (code.instructions[idxInner].optype != OPTYPE.stackOperation) {
+					generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "Lack of callee-saved registers", instruction.line,
+						"It's strongly recommended to push these callee-save registers, in case your code work in user space but not kernel space.");
+					break;
+				}
+			}
+		}
+
+		if (instruction.line < code.endLine && instruction.line > code.textLine && instruction.name.slice(0, 4) == "push" && instruction.dest == "ebp") {
+			let nextInstruction: Instruction = code.instructions[idx+1];
+			if (nextInstruction.name.slice(0, 4) == "movl" && nextInstruction.src == "esp" && nextInstruction.dest == "ebp") {
+				for (let idxInner: number = idx+2; idxInner < idx+5; idxInner++) {
+					if (code.instructions[idxInner].optype != OPTYPE.stackOperation) {
+						generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "Lack of callee-saved registers", instruction.line,
+							"It's strongly recommended to push these callee-save registers, in case your code work in user space but not kernel space.");
+						break;
+					}
+					if (!code.instructions[idxInner].dest.match(/ebx|edi|esi/)) {
+						generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "Not all callee-saved registers are saved", code.instructions[idxInner].line,
+							"Oops! It seems that this register is not a standard callee-save register. Please take a check: ebx, edi and esi are the registers to be saved!");
+						break;
+					}
+				}
+			} else {
+				generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "Enter callee without moving esp to ebp", instruction.line,
+						"You entered the callee with only pushing ebp but forget to rewrite ebp with the current stack pointer register (esp).");
+					break;
+			}
+		}
+
+
+
+		/* Line checking */
 		// Check for code before .data directive
 		if (code.dataLine > instruction.line) {
 			generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Error, [], "Instruction before start of program", instruction.line,
@@ -164,10 +225,7 @@ export function generateDiagnostics(diagnosticInfo: DiagnosticInfo, code: Code) 
 		}
 	}
 
-	/* Block Checking */
-	// Alignment issues
 	
-
 }
 
 
@@ -201,4 +259,25 @@ export function generateDiagnostic(diagnosticInfo: DiagnosticInfo, severity: Dia
 	}
 	// Push diagnostics
 	diagnosticInfo.diagnostics.push(diagnostic);
+}
+
+
+function typeMatch(instName: string, alignVal: number): boolean {
+	let matchFlag: boolean = false;
+	switch (instName) {
+		case ".word":
+		case ".short":
+		case ".int":
+			matchFlag = (alignVal == 2) ? true : false;
+			break;
+		case ".long":
+			matchFlag = (alignVal == 4) ? true : false;
+			break;
+		case ".quad":
+			matchFlag = (alignVal == 8) ? true : false;
+			break;
+		default:
+			break;
+	}
+	return matchFlag;
 }

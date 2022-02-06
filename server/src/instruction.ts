@@ -66,6 +66,7 @@ export class Instruction {
   public optype: number = NaN;                          // Operation type
   public memAddr: number = NaN;                        // Memory address
   public mem: string = "";                             // Targeting memory (label name)
+  public memArray: string[] = []                        // only used for jump tables
   public destMem: number = NaN;                        // Destination memory address
   public line: number = NaN;                           // Line number
   public reg: string = "";
@@ -336,12 +337,11 @@ export class Instruction {
 
       // Directives
       case ".align":
-        if (instlst.length >= 2) {
+        if (instlst.length == 2) {
           if (isAttasmNum(instlst[1])) {
-            this.immVal = this.parseImmediate(instlst[1]);
+            // immediate value
+            this.immVal = this.parseMemImmediate(instlst[1]);
             this.immValType = instlst[1][0];
-          } else {
-            this.mem = instlst[1];
           }
           this.optype = OPTYPE.directiveNumber;
         } else {
@@ -361,15 +361,22 @@ export class Instruction {
 
       case ".byte":
       case ".word":
+      case ".short":
+      case ".int":
       case ".long":
       case ".quad":
-      case ".int":
         if (instlst.length >= 2) {
-          for (let i = 0; i < instlst.length - 1; i++) {
-            this.immValArray.push(this.parseImmediate(instlst[i+1]));
-            this.immValTypeArray.push(instlst[i+1][0]);
-            this.optype = OPTYPE.directiveNumber;
+          if (isAttasmNum(instlst[1])){
+            for (let i = 1; i < instlst.length; i++) {
+              this.immValArray.push(this.parseImmediate(instlst[i]));
+              this.immValTypeArray.push(instlst[i][0]);
+            }
+          } else {
+            for (let i = 1; i < instlst.length; i++) {
+              this.memArray.push(instlst[i]);
+            }
           }
+          this.optype = OPTYPE.directiveNumber;
         } else {
           this.flags |= INSTFLAG.argumentNumberInvalid;
         }
@@ -563,6 +570,41 @@ export class Instruction {
       } else {
         ret = val.slice(1); // e.g. eax, al, ar...
       }
+    }
+    return ret;
+  }
+
+
+  // Helper function to parse values from a string
+  // Possible value type: decimal, hexadecimal, binary
+  private parseMemImmediate(val: string): number {
+    let ret: number;
+    val = val.trim();
+    switch (val[0]) {
+      case "0":
+        // Hexadecimal or Octal
+        if (val[1] == 'x') {
+          if (val[2] == '-') {
+            ret = -parseInt(val.slice(2), 16);
+          } else {
+            ret = parseInt(val.slice(1), 16);
+          }
+        } else {
+          if (val[1] == '-') {
+            ret = -parseInt(val.slice(2), 8);
+          } else {
+            ret = parseInt(val.slice(1), 8);
+          }
+        }
+        break
+      default:
+        // Decimal
+        if (val[0] == '-') {
+          ret = -parseInt(val.slice(1), 10);
+        } else {
+          ret = parseInt(val.slice(0), 10);
+        }
+        break;
     }
     return ret;
   }

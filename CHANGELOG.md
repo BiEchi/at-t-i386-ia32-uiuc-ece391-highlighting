@@ -6,6 +6,30 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 
 
+## [4.0.0] - 2022.2.5
+
+### Added
+
+-   Completed block checking.
+
+
+
+## [3.5.0] - 2022.2.5
+
+### Added
+
+-   Completed line checking.
+
+
+
+## [3.0.0] - 2022.2.5
+
+### Added
+
+-   Completed parsing & tokenization.
+
+
+
 ## [2.4.0] - 2022.1.31
 
 ### Added

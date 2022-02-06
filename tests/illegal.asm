@@ -28,7 +28,6 @@
 	STRUCT_SIZE = 16
 
 # Pointer to head of list (initialized to NULL)
-	.align 	4
 arg: 
 	.long   0
 mp1_list_head:
@@ -88,10 +87,13 @@ mp1_poke:
 # Registers: Standard callee saved registers
 // void mp1_rtc_tasklet (unsigned long);
 mp1_rtc_tasklet:
-	enter 	$0, $4
-	pushl	%esi
-	pushl	%edi
+
+	pushl	%ebp
+	movl	%esp, %ebp
+	
 	pushl	%ebx
+	pushl	%edi
+	pushl	%edi
 
 	movw	%ax, %bx # invalid!
 	addl	$0, %eax
