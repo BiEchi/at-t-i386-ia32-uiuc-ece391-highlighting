@@ -37,15 +37,15 @@ ptr_prev:
     .long	0
 ptr: 
 	.long	0
-
 	.align	4
 function_jump_table:
 	.long 	mp1_ioctl_add, mp1_ioctl_remove, mp1_ioctl_find, mp1_ioctl_sync
 
+	
+.text
 
 .global 	mp1_rtc_tasklet
 .global 	mp1_ioctl
-
 
 /**********************************************************************************/
 /*                                                                                */
@@ -63,10 +63,14 @@ function_jump_table:
 # Registers: Clobbers EDX
 // void mp1_poke (void);
 mp1_poke:
-	movl    vmem_base_addr(,1),%edx
-	movb    %cl,(%edx,%eax,1)
-	ret
+	movl    vmem_base_addr(, 1), %edx
+
+	movb	$1, %ar
+	pushl	%eax
+	pushb	%al
 	
+	ret
+
 
 /**********************************************************************************/
 /*                                                                                */
@@ -84,14 +88,14 @@ mp1_poke:
 # Registers: Standard callee saved registers
 // void mp1_rtc_tasklet (unsigned long);
 mp1_rtc_tasklet:
-	enter 	$0, $0
+	enter 	$0, $4
 	pushl	%esi
 	pushl	%edi
 	pushl	%ebx
 
-	adkk	%eax # should be invalid!
-	addl	$9999999999999999, %eax # should be invalid!
-
+	movw	%ax, %bx # invalid!
+	addl	$0, %eax
+	
 	movl	mp1_list_head, %esi
 
 mp1_rtc_tasklet_builtin_nextnode:
@@ -114,6 +118,10 @@ mp1_rtc_tasklet_builtin_counterzero:
 	je		mp1_rtc_tasklet_builtin_current_offchar
 	
 	jmp		mp1_rtc_tasklet_builtin_finish # invalid finish
+	movw	%ax, %bx
+
+	pushb	%ar
+	
 	
 mp1_rtc_tasklet_builtin_current_onchar: 
 	movw	$0, STATUS(%esi)
@@ -137,12 +145,13 @@ mp1_rtc_tasklet_builtin_current_offchar:
 	movw 	LOCATION(%esi), %ax
 	imulw 	$2, %ax
 	call 	mp1_poke
-
+	
 	movw	ON_LENGTH(%esi), %bx
 	movw	%bx, COUNTDOWN(%esi)
 	
 	movl	NEXT(%esi), %esi
 	jmp		mp1_rtc_tasklet_builtin_nextnode
+	movl	%ebp, 4(%esp, 2, %eax)
 	
 mp1_rtc_tasklet_builtin_finish:
 	jmp		mp1_global_exit
@@ -321,6 +330,10 @@ mp1_ioctl_find:
 	cmpl	$0, %edi
 	je		mp1_ioctl_find_builtin_failure
         
+	pushb	%ar
+	movb	%al, %ar
+
+		
 	pushw	LOCATION(%esi)
 	call	mp1_ioctl_list_search
 	addl	$4, %esp
@@ -377,7 +390,7 @@ mp1_ioctl_sync:
 	movl	ptr, %edi
 	
 	# 1 
-	pushw	%cx
+	pushb	%cl
 	call	mp1_ioctl_list_search
 	addl	$4, %esp
 
@@ -440,7 +453,6 @@ mp1_ioctl_sync_builtin_success:
 // PROTOTYPE int32_t mp1_ioctl_list_search(int16_t location)
 mp1_ioctl_list_search:
 	enter 	$0, $0
-
 	pushl	%esi
 	pushl	%edi
 	pushl	%ebx

@@ -66,7 +66,7 @@
 				},
 				{
 					"name": "variable.parameter.register",
-					"match": "^%.*|eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dx|dl|dr|edi|di|esi|si|eip|esp|ebp"
+					"match": "%eax|%ax|%al|%ar|%ebx|%bx|%bl|%br|%ecx|%cx|%cl|%cr|%edx|%dx|%dl|%dr|%edi|%di|%esi|%si|%eip|%esp|%ebp"
 				},
 				{
 					"name": "comment.line.asm",

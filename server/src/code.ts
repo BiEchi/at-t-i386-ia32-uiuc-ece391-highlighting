@@ -23,7 +23,7 @@ export class Code {
   public textLine: number = NaN;                                // Line number of .text
   public endLine: number = NaN;                                 // Line number of .end
   private firstInstrIdx: number = NaN;                          // First instruction index after .ORIG
-  private lineNum: number = 0;                                  // Keeps track of current line number
+  private lineNum: number = 0;                                  // Keeps track of current line number (in the file)
   private memAddr: number = NaN;                                // Keep track of current memory address
   private stack: Stack<Instruction> = new Stack<Instruction>(); // Stack used for building CFG
 
@@ -58,31 +58,25 @@ export class Code {
     let lines = text.split('\n');
     let instruction: Instruction;
     let line: string;
-
-    // Remove slash star comment blocks
-    let comment_block_flag: boolean = false;
-    for (let idx = 0; idx < lines.length; idx++) {
-      line = lines[idx];
-      line = line.trim();
-      if (line.slice(0, 2) == '/*') {
-        comment_block_flag = true;
-      }
-      if (comment_block_flag = true) {
-        if (line.slice(line.length-2) == '*/') {
-          comment_block_flag = false;
-        }
-        line = "";
-        continue;
-      }
-    }
     
     // Construct each instruction
     let endWithSharp: boolean = false;
+    let comment_block_flag: boolean = false;
     for (let idx = 0; idx < lines.length; idx++) {
       endWithSharp = false;
       line = lines[idx];
-      // Remove spaces and sharp comments
       line = line.trim();
+      // remove '/* */'
+      if (line.slice(0, 2) == '/*') {
+        comment_block_flag = true;
+      }
+      if (comment_block_flag == true) {
+        if (line.slice(line.length-2) == '*/') {
+          comment_block_flag = false;
+        }
+        line = ""
+      }
+      // remove '#'
       for (let i = 0; i < line.length; i++) {
         if (line[i] == '#') {
           if (i > 0 && !line[i - 1].match(/\s/)) {
@@ -92,17 +86,18 @@ export class Code {
           break;
         }
       }
-      // Remove double slash comments
+      // Remove '//'
       if (line.slice(0, 2) == '//') {
         line = ""
       }
       if (line) {
         instruction = new Instruction(line);
         // Handle .ascii in multiple line manner
-        if (instruction.optype == OPTYPE.directiveString  && instruction.mem &&
+        if (instruction.optype == OPTYPE.directiveString && instruction.mem &&
           instruction.mem.split('"').length < 3) {
           idx = this.parseDirectiveString(instruction, idx, lines);
         }
+
         this.pushInstruction(instruction);
 
         // Handle instructions/directives right behind labels
@@ -158,7 +153,7 @@ export class Code {
     return idx;
   }
 
-  // Push an instruction according to its type (push/not push/push to label)
+  // Push an instruction according to its type ({push}/{not push}/{push to label})
   private pushInstruction(instruction: Instruction) {
     let label: Label;
     // Keep track of line numbers
@@ -202,12 +197,14 @@ export class Code {
         }
         this.instructions.push(instruction);
         break;
+
       case OPTYPE.label:
         // Labels do not occupy memory addresses
         this.memAddr--;
         label = new Label(instruction);
         this.labels.push(label);
         break;
+        
       default:
         instruction.calcMem();
         this.instructions.push(instruction);

@@ -18,6 +18,7 @@ import {
   DeclarationParams,
   Location,
   InsertTextFormat,
+  DiagnosticTag,
 } from 'vscode-languageserver';
 
 import {
@@ -27,7 +28,6 @@ import {
 import {
   generateDiagnostics,
   generateDiagnostic,
-  MESSAGE_POSSIBLE_SUBROUTINE,
 } from './diagnostic';
 
 import {
@@ -37,6 +37,7 @@ import {
 } from './completion';
 
 import {
+	Instruction,
   Label,
 } from './instruction'
 
@@ -61,47 +62,47 @@ connection.onInitialize((params: InitializeParams) => {
   // Does the client support the `workspace/configuration` request?
   // If not, we fall back using global settings.
   hasConfigurationCapability = !!(
-    capabilities.workspace && !!capabilities.workspace.configuration
+	capabilities.workspace && !!capabilities.workspace.configuration
   );
   hasWorkspaceFolderCapability = !!(
-    capabilities.workspace && !!capabilities.workspace.workspaceFolders
+	capabilities.workspace && !!capabilities.workspace.workspaceFolders
   );
   hasDiagnosticRelatedInformationCapability = !!(
-    capabilities.textDocument &&
-    capabilities.textDocument.publishDiagnostics &&
-    capabilities.textDocument.publishDiagnostics.relatedInformation
+	capabilities.textDocument &&
+	capabilities.textDocument.publishDiagnostics &&
+	capabilities.textDocument.publishDiagnostics.relatedInformation
   );
 
   const result: InitializeResult = {
-    capabilities: {
-      textDocumentSync: TextDocumentSyncKind.Incremental,
-      // Tell the client that this server supports code completion.
-      completionProvider: {
-        resolveProvider: true
-      },
-      codeActionProvider: true,
-      definitionProvider: true
-    }
+	capabilities: {
+	  textDocumentSync: TextDocumentSyncKind.Incremental,
+	  // Tell the client that this server supports code completion.
+	  completionProvider: {
+		resolveProvider: true
+	  },
+	  codeActionProvider: true,
+	  definitionProvider: true
+	}
   };
   if (hasWorkspaceFolderCapability) {
-    result.capabilities.workspace = {
-      workspaceFolders: {
-        supported: true
-      }
-    };
+	result.capabilities.workspace = {
+	  workspaceFolders: {
+		supported: true
+	  }
+	};
   }
   return result;
 });
 
 connection.onInitialized(() => {
   if (hasConfigurationCapability) {
-    // Register for all configuration changes.
-    connection.client.register(DidChangeConfigurationNotification.type, undefined);
+	// Register for all configuration changes.
+	connection.client.register(DidChangeConfigurationNotification.type, undefined);
   }
   if (hasWorkspaceFolderCapability) {
-    connection.workspace.onDidChangeWorkspaceFolders(_event => {
-      connection.console.log('Workspace folder change event received.');
-    });
+	connection.workspace.onDidChangeWorkspaceFolders(_event => {
+	  connection.console.log('Workspace folder change event received.');
+	});
   }
 });
 
@@ -132,33 +133,33 @@ let documentSettings: Map<string, Thenable<ExtensionSettings>> = new Map();
 
 connection.onDidChangeConfiguration(change => {
   if (hasConfigurationCapability) {
-    // Reset all cached document settings
-    documentSettings.clear();
+	// Reset all cached document settings
+	documentSettings.clear();
   } else {
-    globalSettings = <ExtensionSettings>(
-      (change.settings.LC3 || defaultSettings)
-    );
+	globalSettings = <ExtensionSettings>(
+	  (change.settings.LC3 || defaultSettings)
+	);
   }
 
   // Revalidate all open text documents
   const docs = documents.all();
   for (let i = 0; i < docs.length; i++) {
-    const code = new Code(docs[i].getText());
-    validateTextDocument(docs[i], code);
+	const code = new Code(docs[i].getText());
+	validateTextDocument(docs[i], code);
   }
 });
 
 export function getDocumentSettings(resource: string): Thenable<ExtensionSettings> {
   if (!hasConfigurationCapability) {
-    return Promise.resolve(globalSettings);
+	return Promise.resolve(globalSettings);
   }
   let result = documentSettings.get(resource);
   if (!result) {
-    result = connection.workspace.getConfiguration({
-      scopeUri: resource,
-      section: 'LC3'
-    });
-    documentSettings.set(resource, result);
+	result = connection.workspace.getConfiguration({
+	  scopeUri: resource,
+	  section: 'LC3'
+	});
+	documentSettings.set(resource, result);
   }
   return result;
 }
@@ -191,25 +192,13 @@ export async function validateTextDocument(textDocument: TextDocument, code: Cod
   const settings = await getDocumentSettings(textDocument.uri);
   const diagnostics: Diagnostic[] = [];
   const diagnosticInfo: DiagnosticInfo = {
-    textDocument: textDocument,
-    diagnostics: diagnostics, // linter
-    settings: settings
+	textDocument: textDocument,
+	diagnostics: diagnostics, // linter
+	settings: settings
   };
 
-	// Generate diagnostics
-	generateDiagnostics(diagnosticInfo, code);
-	// FOR TEST
-	const diagnostic: Diagnostic = {
-		severity: DiagnosticSeverity.Error,
-		range: {
-			start: { line: 0, character: 0 },
-			end: { line: 4, character: 0 }
-		},
-		message: "Fuck you VS Code!",
-		source: "AT&T x86_32 Assembly",
-		tags: null
-	};
-	diagnostics.push(diagnostic);
+  // Generate diagnostics
+  generateDiagnostics(diagnosticInfo, code);
   // Send the computed diagnostics to VSCode.
   connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
 }
@@ -219,34 +208,34 @@ export function provideCodeActions(parms: CodeActionParams): CodeAction[] {
   // Check if document was correctly returned
   const document = documents.get(parms.textDocument.uri);
   if (!document) {
-    return [];
+	return [];
   }
 
   // Check if diagnostics is non-empty
   const diagnostics = parms.context.diagnostics;
   if (!(diagnostics) || diagnostics.length == 0) {
-    return [];
+	return [];
   }
 
   // Find the diagnostics with unused label
   const codeActions: CodeAction[] = [];
   diagnostics.forEach((diag) => {
-    if (diag.severity === DiagnosticSeverity.Hint && diag.message.includes(MESSAGE_POSSIBLE_SUBROUTINE)) {
-      codeActions.push({
-        title: "Insert a mark to indicate this is a subroutine",
-        kind: CodeActionKind.QuickFix,
-        diagnostics: [diag],
-        edit: {
-          changes: {
-            [parms.textDocument.uri]: [{
-              range: { start: diag.range.start, end: diag.range.start },
-              newText: "; @SUBROUTINE\n"
-            }]
-          }
-        }
-      });
-      return;
-    }
+	if (diag.severity === DiagnosticSeverity.Hint && diag.message.includes("???")) {
+	  codeActions.push({
+		title: "Insert a mark to indicate this is a subroutine",
+		kind: CodeActionKind.QuickFix,
+		diagnostics: [diag],
+		edit: {
+		  changes: {
+			[parms.textDocument.uri]: [{
+			  range: { start: diag.range.start, end: diag.range.start },
+			  newText: "; @SUBROUTINE\n"
+			}]
+		  }
+		}
+	  });
+	  return;
+	}
   });
   return codeActions;
 }
@@ -255,19 +244,20 @@ export function provideCodeActions(parms: CodeActionParams): CodeAction[] {
 connection.onCompletion(provideCompletion);
 export function provideCompletion(textDocumentPosition: TextDocumentPositionParams): CompletionItem[] {
   completionItems.forEach(item => {
-    // Remove item on the current line
-    if (item.data === textDocumentPosition.position.line) {
-      completionItems.splice(completionItems.indexOf(item), 1);
-    }
+	// Remove item on the current line
+	if (item.data === textDocumentPosition.position.line) {
+	  completionItems.splice(completionItems.indexOf(item), 1);
+	}
   });
   return completionItems;
 }
 
+// Get the completion for labels
 connection.onDefinition(provideDefinition);
 export function provideDefinition(params: DeclarationParams): Location | undefined {
   let doc = documents.get(params.textDocument.uri);
   if (doc == undefined) {
-    return undefined;
+	return undefined;
   }
   let docstr: string = doc.getText();
 
@@ -275,18 +265,18 @@ export function provideDefinition(params: DeclarationParams): Location | undefin
   let offset: number = doc.offsetAt(params.position);
   let start: number = offset, end: number = offset;
   while (start > 0 && isAlphaNumeric(docstr[start - 1])) {
-    start--;
+	start--;
   }
   // Point "end" to the last line of file
   while (isAlphaNumeric(docstr[end])) {
-    end++;
+	end++;
   }
   let name: string = docstr.substring(start, end);
   for (let idx = 0; idx < LabelList.length; idx++) {
-    let label: Label = LabelList[idx];
-    if (name == label.name) {
-      return { uri: params.textDocument.uri, range: { start: { line: label.line, character: 0 }, end: { line: label.line + 1, character: 0 } } };
-    }
+	let label: Label = LabelList[idx];
+	if (name == label.name) {
+	  return { uri: params.textDocument.uri, range: { start: { line: label.line, character: 0 }, end: { line: label.line + 1, character: 0 } } };
+	}
   }
 }
 
@@ -1027,19 +1017,19 @@ export function provideCompletionResolve(item: CompletionItem): CompletionItem {
 	}
 	else if (item.data === OPNUM.ENTER) {
 		item.detail = '';
-		item.insertText = '';
+		item.insertText = 'enter\t${1:val}, ${2:val}\n';
 		item.insertTextFormat = InsertTextFormat.Snippet;
 		item.documentation = 'Usage:\n\n';
 	}
 	else if (item.data === OPNUM.LEAVE) {
 		item.detail = '';
-		item.insertText = '';
+		item.insertText = 'leave\n';
 		item.insertTextFormat = InsertTextFormat.Snippet;
 		item.documentation = 'Usage:\n\n';
 	}
 	else if (item.data === OPNUM.RET) {
 		item.detail = '';
-		item.insertText = '';
+		item.insertText = 'ret\n';
 		item.insertTextFormat = InsertTextFormat.Snippet;
 		item.documentation = 'Usage:\n\n';
 	}
@@ -1398,19 +1388,19 @@ export function provideCompletionResolve(item: CompletionItem): CompletionItem {
 		item.documentation = 'Usage:\n\n';
 	}
 	else if (item.data === OPNUM.EIP) {
-		item.detail = '';
+		item.detail = 'Program counter.';
 		item.insertText = '';
 		item.insertTextFormat = InsertTextFormat.Snippet;
 		item.documentation = 'Usage:\n\n';
 	}
 	else if (item.data === OPNUM.ESP) {
-		item.detail = '';
+		item.detail = 'Stack current pointer.';
 		item.insertText = '';
 		item.insertTextFormat = InsertTextFormat.Snippet;
 		item.documentation = 'Usage:\n\n';
 	}
 	else if (item.data === OPNUM.EBP) {
-		item.detail = '';
+		item.detail = 'Stack base pointer.';
 		item.insertText = '';
 		item.insertTextFormat = InsertTextFormat.Snippet;
 		item.documentation = 'Usage:\n\n';

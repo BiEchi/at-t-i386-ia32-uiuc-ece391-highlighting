@@ -1,9 +1,12 @@
 // This file is now editing.
 
+import { DebugAdapterNamedPipeServer } from "vscode";
 import { ResourceOperationKind } from "vscode-languageserver";
 import {
   BasicBlock
 } from "./basicBlock";
+
+import { generateDiagnostic } from "./diagnostic";
 
 export enum CC {
   none = 0x0,  // Invalid CC, usually on program start
@@ -25,9 +28,13 @@ export enum INSTFLAG {
   isAlwaysBR = 0x10,
   isNeverBR = 0x20,
   hasRedundantCC = 0x40,
-  useMemoryTwice = 0x80, // movl LABEL1, LABEL2
-  useImmediateTwice = 0x90,
-  warnedUnrolledLoop = 0x100,
+  useMemoryTwice = 0x80,
+  useImmediateTwice = 0x100,
+  warnedUnrolledLoop = 0x200,
+  DNE = 0x400,
+  argumentNumberInvalid = 0x800,
+  numberWithoutSymbol = 0x1000,
+  registerWithoutSymbol = 0x2000,
 };
 
 enum DATATYPE {
@@ -42,16 +49,20 @@ export enum OPTYPE {
   controlOperation = 0x2,
   label = 0x4,
   directiveNumber = 0x8,
-  directiveString = 0x16,
-  directiveData,
-  directiveText,
-  directiveEnd,
-  aloneOperation,
+  directiveString = 0x10,
+  directiveGlobal = 0x20,
+  directiveData = 0x40,
+  directiveText = 0x80,
+  directiveEnd = 0x100,
+  aloneOperation = 0x200,
+  singleArchimetic = 0x400,
+  stackOperation = 0x800,
 }
 
 export class Instruction {
   // Internal variables
   public rawString: string;                            // The original line content
+  public name: string;                                  // Operation name
   public optype: number = NaN;                          // Operation type
   public memAddr: number = NaN;                        // Memory address
   public mem: string = "";                             // Targeting memory (label name)
@@ -79,24 +90,48 @@ export class Instruction {
     // Replace white spaces by normal spaces
     let space: RegExp = new RegExp("[\s\n\r\t]", 'g');
     this.rawString = inst.replace(space, " ");
-
-    // Parse instruction into lower cases
-    let instlst = inst.toLowerCase().split(/(\s|,)/); // \s means all white spaces
+  
+    // Parse the instruction (note case 'movl %eax, 4(%ebx, 2, %ecx)')
+    let instlst: string[] = [];
+    let lastSliceIdx: number = 0;
+    inst = inst.toLowerCase().replace('\t', ' '); // \s means all white spaces
+    let squareFlag:boolean = false;
+    for (let i = 0; i < inst.length; i++) {
+        if (inst[i] == '(') {
+            squareFlag = true;
+        }
+        if (inst[i] == ')') {
+            squareFlag = false;
+        }
+        let slice: string = "";
+        if (squareFlag == false) {
+            if (inst[i] == ' ' || inst[i] == ',') {
+                // at index i, remove 1 element, insert 2 items
+                slice = inst.slice(lastSliceIdx, i)
+                if (inst[i-1] != ',' && inst[i-1] != ' ' && slice != "") {
+                    instlst.push(slice);
+                }
+                lastSliceIdx = i+1;
+            }
+            // conclude the squares or end of line
+            if (inst[i] == ')' || i == inst.length-1) {
+                slice = inst.slice(lastSliceIdx, i+1).replace(" ", "").replace("\t", "");
+                if (slice != ""){
+                    instlst.push(slice);
+                }
+                lastSliceIdx = i+1;
+            }
+        }
+    }
 
     // Label
-    if (instlst.length == 1 && instlst[0].charAt(instlst[0].length-1) == ":") {
+    if (instlst[0].slice(instlst[0].length-1, instlst[0].length) == ':') {
       this.optype = OPTYPE.label;
     }
 
-    // Remove auxiliary parts
-    for (let i = instlst.length; i > 0; i--) {
-      if (instlst[i] == '' || instlst[i] == ' ' || instlst[i] == '\t' || instlst[i] == ',') {
-        instlst.splice(i, 1);
-      }
-    }
-
+    this.name = instlst[0];
     // Assign values to variables
-    switch (instlst[0]) {
+    switch (this.name) {
       // operations not setting flags
       // actually they will, so warning will pop up if jump after these operations
       case "addb":
@@ -107,18 +142,6 @@ export class Instruction {
       case "subw":
       case "subl":
       case "subq":
-      case "negb":
-      case "negw":
-      case "negl":
-      case "negq":
-      case "incb":
-      case "incw":
-      case "incl":
-      case "incq":
-      case "decb":
-      case "decw":
-      case "decl":
-      case "decq":
       case "mulb":
       case "mulw":
       case "mull":
@@ -183,6 +206,15 @@ export class Instruction {
       case "xorw":
       case "xorl":
       case "xorq":
+      // operations not setting flags
+      case "movb":
+      case "movw":
+      case "movl":
+      case "movq":
+      case "leab":
+      case "leaw":
+      case "leal":
+      case "leaq":
       // operations setting flags
       case "cmpb":
       case "cmpw":
@@ -192,7 +224,7 @@ export class Instruction {
       case "testw":
       case "testl":
       case "testq":
-        if (instlst.length >= 3) {
+        if (instlst.length == 3) {
           // first operand
           if (this.decideDataType(instlst[1]) == DATATYPE.label) {
             this.mem = instlst[1];
@@ -225,25 +257,74 @@ export class Instruction {
               this.mem = instlst[2];
             }
           }
-          if (instlst[0][0] == 'c' || instlst[0][0] == 't'){
-            this.optype = OPTYPE.controlOperation;
-          } else {
-            this.optype = OPTYPE.arithmeticOperation;
-          }
+          this.optype = OPTYPE.arithmeticOperation;
         } else {
-          this.flags |= INSTFLAG.isIncomplete;
+          this.flags |= INSTFLAG.argumentNumberInvalid;
         }
         break;
 
+      case "negb":
+      case "negw":
+      case "negl":
+      case "negq":
+      case "incb":
+      case "incw":
+      case "incl":
+      case "incq":
+      case "decb":
+      case "decw":
+      case "decl":
+      case "decq":
+        if (instlst.length == 2) {
+          this.decideDataType(instlst[1]); // check whether register/number is valid
+          this.dest = this.parseRegister(instlst[1]);
+          this.optype = OPTYPE.singleArchimetic;
+        } else {
+          this.flags |= INSTFLAG.argumentNumberInvalid;
+        }
+        break;
+
+      case "pushb":
+      case "pushw":
+      case "pushl":
+      case "pushq":
+        if (instlst.length == 2) {
+          if (this.decideDataType(instlst[1]) == DATATYPE.register) {
+            this.dest = this.parseRegister(instlst[1]);
+          }
+          this.optype = OPTYPE.stackOperation;
+        } else {
+          this.flags |= INSTFLAG.argumentNumberInvalid;
+        }
+        break;
+
+      case "popb":
+      case "popw":
+      case "popl":
+      case "popq":
+        if (instlst.length == 2) {
+          if (this.decideDataType(instlst[1]) == DATATYPE.register) {
+            this.src = this.parseRegister(instlst[1]);
+          }
+          this.optype = OPTYPE.stackOperation;
+        } else {
+          this.flags |= INSTFLAG.argumentNumberInvalid;
+        }
+        break; 
+
       case "enter":
-        if (instlst.length >= 3) {
-          this.immValArray.push(this.parseImmediate(instlst[1]));
-          this.immValTypeArray.push(instlst[1][0]);
-          this.immValArray.push(this.parseImmediate(instlst[2]));
-          this.immValTypeArray.push(instlst[1][0]);
+        if (instlst.length == 3) {
+          if (this.decideDataType(instlst[1])) {
+            this.immValArray.push(this.parseImmediate(instlst[1]));
+            this.immValTypeArray.push(instlst[1][0]);
+          }
+          if (this.decideDataType(instlst[2]) == DATATYPE.immediateValue) {
+            this.immValArray.push(this.parseImmediate(instlst[2]));
+            this.immValTypeArray.push(instlst[1][0]);
+          }
           this.optype = OPTYPE.controlOperation;
         } else {
-          this.flags |= INSTFLAG.isIncomplete;
+          this.flags |= INSTFLAG.argumentNumberInvalid;
         }
         break;
 
@@ -264,7 +345,17 @@ export class Instruction {
           }
           this.optype = OPTYPE.directiveNumber;
         } else {
-          this.flags |= INSTFLAG.isIncomplete;
+          this.flags |= INSTFLAG.argumentNumberInvalid;
+        }
+        break;
+
+      case ".global":
+      case ".globl":
+        if (instlst.length == 2) {
+          this.mem = instlst[1];
+          this.optype = OPTYPE.directiveGlobal;
+        } else {
+          this.flags |= INSTFLAG.argumentNumberInvalid;
         }
         break;
 
@@ -280,7 +371,7 @@ export class Instruction {
             this.optype = OPTYPE.directiveNumber;
           }
         } else {
-          this.flags |= INSTFLAG.isIncomplete;
+          this.flags |= INSTFLAG.argumentNumberInvalid;
         }
         break;
           
@@ -291,27 +382,38 @@ export class Instruction {
           this.mem = inst.slice(instlst[0].length).trim();
           this.optype = OPTYPE.directiveString;
         } else {
-          this.flags |= INSTFLAG.isIncomplete;
+          this.flags |= INSTFLAG.argumentNumberInvalid;
         }
         break;
 
       case ".data":
+        if (instlst.length > 1) {
+          this.flags |= INSTFLAG.argumentNumberInvalid;
+        }
         this.optype = OPTYPE.directiveData;
         break;
 
       case ".text":
+        if (instlst.length > 1) {
+          this.flags |= INSTFLAG.argumentNumberInvalid;
+        }
         this.optype = OPTYPE.directiveText;
         break;
 
       case ".end":
+        if (instlst.length > 1) {
+          this.flags |= INSTFLAG.argumentNumberInvalid;
+        }
         this.optype = OPTYPE.directiveEnd;
 
       case "call":
-        if (instlst.length >= 2) {
-          this.mem = instlst[1];
+        if (instlst.length == 2) {
+          if (this.decideDataType(instlst[1]) == DATATYPE.label) {
+            this.mem = instlst[1];
+          }
           this.optype = OPTYPE.controlOperation;
         } else {
-          this.flags |= INSTFLAG.isIncomplete;
+          this.flags |= INSTFLAG.argumentNumberInvalid;
         }
 
       // Jump
@@ -348,13 +450,18 @@ export class Instruction {
         let signFlag = instlst[0].slice(1); // signFlag = "z"/"np"/...
         this.parseSignFlag(signFlag);
         if (instlst.length >= 2) {
+          if (this.decideDataType(instlst[1]) == DATATYPE.label) {
+            this.mem = instlst[1];
+          }
           this.optype = OPTYPE.controlOperation;
-          this.mem = instlst[1];
         } else {
-          this.flags |= INSTFLAG.isIncomplete;
+          this.flags |= INSTFLAG.argumentNumberInvalid;
         }
         break;
       default:
+        if (this.optype != OPTYPE.label) {
+          this.flags |= INSTFLAG.DNE;
+        }
         break;
     }
   }
@@ -413,7 +520,14 @@ export class Instruction {
 
   private decideDataType(val:string): number {
     let dataType: number;
-    val = val.trim();
+    val = val.trim().replace("(", ",").replace(")", ",");
+    let valArray: string[] = val.split(",");
+    for (let item = 0; item < valArray.length; item++){
+      valArray[item] = valArray[item].trim();
+      if (valArray[item] == "") {
+        valArray.splice(item, 1);
+      }
+    }
     switch (val[0]) {
       case '$':
         dataType = DATATYPE.immediateValue;
@@ -424,6 +538,17 @@ export class Instruction {
       default:
         dataType = DATATYPE.label;
     }
+    if (isAttasmNum(val)) {
+      this.flags |= INSTFLAG.numberWithoutSymbol;
+    } 
+    for (let valIter = 0; valIter < valArray.length; valIter++) {
+      if (isAttasmReg(valArray[valIter]) && val.indexOf("%") == -1) {
+        this.flags |= INSTFLAG.registerWithoutSymbol;
+        break;
+      }
+    }
+    
+
     return dataType;
   }
 
@@ -551,6 +676,6 @@ export function isAttasmNum(str: string): boolean {
 
 // Returns true if the input string is an attasm register: %eax
 export function isAttasmReg(str: string): boolean {
-  const reg = /eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dx|dl|dr|edi|di|esi|si|eip|esp|ebp/i;
+  const reg = /^(eax|ax|al|ar|ebx|bx|bl|br|ecx|cx|cl|cr|edx|dx|dl|dr|edi|di|esi|si|eip|esp|ebp)$/i;
   return str.match(reg) != null;
 }
