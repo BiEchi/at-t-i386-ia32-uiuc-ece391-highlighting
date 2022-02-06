@@ -81,7 +81,7 @@ export function generateDiagnostics(diagnosticInfo: DiagnosticInfo, code: Code) 
 			}
 		}
 
-		// Calling issues, fowared & backward checking
+		// Calling issues, foward & backward checking
 		if (instruction.line < code.endLine && instruction.line > code.textLine && instruction.name == "enter") {
 			// an alignment at any line is okay
 			for (let idxInner: number = idx+1; idxInner < idx+4; idxInner++) {
@@ -223,9 +223,13 @@ export function generateDiagnostics(diagnosticInfo: DiagnosticInfo, code: Code) 
 			generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Error, [], "An register must be led with a %", instruction.line,
 				"All registers must have % at its very beginning.");
 		}
+		
+		// Does not support instruction in the same line as labels
+		if (instruction.flags & INSTFLAG.instAfterLabel) {
+			generateDiagnostic(diagnosticInfo, DiagnosticSeverity.Warning, [], "Put instruction and label at the same line", instruction.line,
+				"We do not recomment to write, and this extension is not able to recognize, instructions in the same line, and also multiple instructions on the same line. Make your code clear!");
+		}
 	}
-
-	
 }
 
 

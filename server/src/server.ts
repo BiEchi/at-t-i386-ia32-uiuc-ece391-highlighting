@@ -19,6 +19,8 @@ import {
   Location,
   InsertTextFormat,
   DiagnosticTag,
+  Hover,
+  MarkupKind
 } from 'vscode-languageserver';
 
 import {
@@ -44,6 +46,7 @@ import {
 import {
   Code,
 } from './code';
+import { connect } from "http2";
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -106,6 +109,7 @@ connection.onInitialized(() => {
   }
 });
 
+
 export interface ExtensionSettings {
   version: string;
   showWarnings: boolean;
@@ -137,7 +141,7 @@ connection.onDidChangeConfiguration(change => {
 	documentSettings.clear();
   } else {
 	globalSettings = <ExtensionSettings>(
-	  (change.settings.LC3 || defaultSettings)
+	  (change.settings.attasm || defaultSettings)
 	);
   }
 
@@ -149,6 +153,7 @@ connection.onDidChangeConfiguration(change => {
   }
 });
 
+
 export function getDocumentSettings(resource: string): Thenable<ExtensionSettings> {
   if (!hasConfigurationCapability) {
 	return Promise.resolve(globalSettings);
@@ -157,7 +162,7 @@ export function getDocumentSettings(resource: string): Thenable<ExtensionSetting
   if (!result) {
 	result = connection.workspace.getConfiguration({
 	  scopeUri: resource,
-	  section: 'LC3'
+	  section: 'attasm'
 	});
 	documentSettings.set(resource, result);
   }
@@ -179,6 +184,7 @@ documents.onDidChangeContent(change => {
   updateCompletionItems(code);
   LabelList = code.labels; // refresh the label list 
 });
+
 
 // Simplify the interface
 export interface DiagnosticInfo {
@@ -275,7 +281,19 @@ export function provideDefinition(params: DeclarationParams): Location | undefin
   for (let idx = 0; idx < LabelList.length; idx++) {
 	let label: Label = LabelList[idx];
 	if (name == label.name) {
-	  return { uri: params.textDocument.uri, range: { start: { line: label.line, character: 0 }, end: { line: label.line + 1, character: 0 } } };
+	  	return { 
+			uri: params.textDocument.uri, 
+			range: { 
+				start: { 
+					line: label.line, 
+					character: 0 
+				}, 
+				end: { 
+					line: label.line+1, 
+					character: 0 
+				} 
+			} 
+	  	};
 	}
   }
 }

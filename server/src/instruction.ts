@@ -21,7 +21,7 @@ export enum CC {
 
 export enum INSTFLAG {
   none = 0x0,
-  isIncomplete = 0x1,
+  instAfterLabel = 0x1,
   isSubroutineStart = 0x2,
   isFound = 0x4,
   isDead = 0x8,
@@ -125,9 +125,14 @@ export class Instruction {
         }
     }
 
-    // Label
-    if (instlst[0].slice(instlst[0].length-1, instlst[0].length) == ':') {
+    // Label 
+    /* Buggy: no labels are parsed */
+    let posColon:number = this.rawString.indexOf(':');
+    if (posColon != -1) {
       this.optype = OPTYPE.label;
+      if (this.rawString.length >= posColon+2) {
+        this.flags |= INSTFLAG.instAfterLabel;
+      }
     }
 
     this.name = instlst[0];

@@ -28,6 +28,9 @@
 	STRUCT_SIZE = 16
 
 # Pointer to head of list (initialized to NULL)
+
+
+
 arg: 
 	.long   0
 mp1_list_head:
@@ -36,7 +39,8 @@ ptr_prev:
     .long	0
 ptr: 
 	.long	0
-	.align	4
+
+.align 8
 function_jump_table:
 	.long 	mp1_ioctl_add, mp1_ioctl_remove, mp1_ioctl_find, mp1_ioctl_sync
 
@@ -86,15 +90,13 @@ mp1_poke:
 #            the byte in %cl
 # Registers: Standard callee saved registers
 // void mp1_rtc_tasklet (unsigned long);
-mp1_rtc_tasklet:
-
-	pushl	%ebp
+mp1_rtc_tasklet:  movl
+	
 	movl	%esp, %ebp
 	
 	pushl	%ebx
-	pushl	%edi
-	pushl	%edi
-
+	pushl	%esi
+	
 	movw	%ax, %bx # invalid!
 	addl	$0, %eax
 	
@@ -186,7 +188,7 @@ mp1_ioctl_builtin_fail:
 
 /**************************IOCTL ADD START**************************/
 // PROTOTYPE int mp1_ioctl_add(unsigned long arg)
-mp1_ioctl_add:
+mp1_ioctl_add: dasd
 	enter 	$0, $0
 	pushl	%esi
 	pushl	%edi

@@ -10,17 +10,63 @@ This is the VS Code Extension for UIUC ECE 391, MIT 6.828, and all other AT&T-ba
 
 -   Self Complete.
 
-![image-20220130141442388](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201442.png)
+![image-20220205223106455](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043106.png)
 
-![image-20220130141516885](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-201519.png)
+![image-20220205223123472](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043123.png)
 
 -   File icons designed for UIUC students.
 
 ![image-20220130154626450](https://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-01-30-214627.png)
 
--   Static analysis like `linter` (developing).
+-   Linter line checking.
 
+Memory at both sides of instruction.
 
+![image-20220205223243002](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043243.png)
+
+Code before `.data`, after `.end`, and misplacement of data code and text code.
+
+![image-20220205224209883](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-044210.png)
+
+![image-20220205224336409](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-044336.png)
+
+Instruction does not exist.
+
+![image-20220205224436253](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-044437.png)
+
+Wrong argument number.
+
+![image-20220205224517684](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-044518.png)
+
+The datatype of command does not match the registers.
+
+![image-20220205224711626](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-044712.png)
+
+Immediate value without '$'.
+
+![image-20220205224806259](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-044806.png)
+
+Register without '%’
+
+![image-20220205224844381](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-044844.png)
+
+-   Linter block checking.
+
+Alignment issues.
+
+![image-20220205223452937](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043453.png)
+
+![image-20220205223438129](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043438.png)
+
+![image-20220205223524354](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043525.png)
+
+Calling issues.
+
+![image-20220205223805824](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043806.png)
+
+![image-20220205223842718](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043843.png)
+
+![image-20220205223957125](http://jacklovespictures.oss-cn-beijing.aliyuncs.com/2022-02-06-043957.png)
 
 ## Requirements
 
